@@ -4,13 +4,15 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createLogin, error, setError,} = useContext(AuthContext);
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -29,6 +31,8 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
+                navigate(from, { replace: true });
+
             })
             .catch(error => {
                 if (error.message) {
@@ -42,6 +46,7 @@ const Login = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
+                <Helmet><title>fitLab | Login</title></Helmet>
                     <h1 className="mb-5 text-5xl font-bold">Login Now</h1>
                     <div className="bg-opacity-20 text-base-content border-2 border-gray-400 card shrink-0  w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="p-5 card-body bg-[url('../assets/7.jpg')]">

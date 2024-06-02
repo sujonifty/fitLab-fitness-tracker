@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile,error,setError } = useContext(AuthContext);
     const navigate=useNavigate();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
@@ -17,6 +17,7 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                setError('');
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         //create user entry in the database
@@ -36,13 +37,13 @@ const Register = () => {
                                         showConfirmButton: false,
                                         timer: 2500
                                     });
-                                    navigate('/');
+                                    // navigate('/');
                                 }
                             })
 
 
                     })
-                    .catch((error) => console.log(error))
+                    .catch((error) => setError(error.message))
             })
     }
     return (
@@ -84,7 +85,9 @@ const Register = () => {
                             {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
                             {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be less than 20 characters</span>}
                         </div>
-
+                        {
+                                error && <small className="text-red-700">{error}</small>
+                            }
                         <div className="form-control mt-6">
                             <input type="submit" className="btn btn-primary" value="Sign up" />
                         </div>

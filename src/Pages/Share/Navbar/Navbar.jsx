@@ -1,13 +1,28 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-
+import Swal from "sweetalert2";
+import logo from "../../../../src/assets/fitlabLogo.png"
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
-    
+    const { user, logOut } = useContext(AuthContext);
+    console.log('login user', user)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration Successfully",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-xl rounded-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -18,43 +33,45 @@ const Navbar = () => {
                         {
                             user ?
                                 <>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/">Home</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/class">All Classes</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/forum">Forums</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/dashboard">Dashboard</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/forum">Forums</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/dashboard">Dashboard</NavLink>
                                 </>
                                 :
                                 <>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/">Home</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/class">All Classes</NavLink>
-                                    {/* <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/register">Register</NavLink>
-            <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/login">Login</NavLink> */}
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
+                                    {/* <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/register">Register</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/login">Login</NavLink> */}
                                 </>
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">FitLab</a>
+                <NavLink >
+                    <img src={logo} className="w-32 shadow rounded-md" alt="" />
+                </NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 space-x-4">
                     {
                         user ?
                             <>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/">Home</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/class">All Classes</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/forum">Forums</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/dashboard">Dashboard</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/forum">Forums</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/dashboard">Dashboard</NavLink>
                             </>
                             :
                             <>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/">Home</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/class">All Classes</NavLink>
-                                {/* <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/register">Register</NavLink>
-            <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/login">Login</NavLink> */}
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
+                                {/* <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/register">Register</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/login">Login</NavLink> */}
                             </>
                     }
                 </ul>
@@ -70,19 +87,34 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="dropdown-content space-y-2 z-20 menu p-2 shadow bg-base-100 rounded-box ">
                                 <>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/profile">My Profile </NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} >
-                                        <button >Logout</button>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/profile">My Profile </NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} >
+                                        <button onClick={handleLogOut}>Logout</button>
                                     </NavLink>
                                 </>
                             </ul>
                         </div>
                     </div>
                     :
-                    <NavLink className={({ isActive }) => isActive ? "btn bg-rose-400 " : "btn bg-base-300"} to="/login">Login</NavLink>
+                    <div className="navbar-end">
+                        <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/login">Login</NavLink>
+                    </div>
             }
         </div>
     );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+  
+  

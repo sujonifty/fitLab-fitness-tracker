@@ -1,0 +1,128 @@
+[
+    {
+        "name": "John Doe",
+        "image": "https://i.ibb.co/0C80zZL/trainer1.jpg",
+        "experience": 10,
+        "socialId": {
+            "facebook": "https://facebook.com/johndoe",
+            "twitter": "https://twitter.com/johndoe",
+            "instagram": "https://instagram.com/johndoe"
+        },
+        "availableSlots": [
+            "Monday 10:00-11:00 AM",
+            "Wednesday 2:00-3:00 PM",
+            "Friday 4:00-5:00 PM"
+        ],
+        "background": "John is a certified fitness trainer with a decade of experience in personal training and group fitness instruction. He holds a degree in Exercise Science from the University of XYZ.",
+        "qualifications": [
+            "Certified Personal Trainer (CPT)",
+            "CPR/AED Certification",
+            "Specialist in Strength & Conditioning (SSC)"
+        ]
+    },
+    {
+        "name": "Jane Smith",
+        "image": "https://i.ibb.co/Mf2FDQd/trainer2.jpg",
+        "experience": 8,
+        "socialId": {
+            "linkedin": "https://linkedin.com/in/jane-smith-12345678",
+            "facebook": "https://facebook.com/jane.smith",
+            "instagram": "https://instagram.com/jane.smith"
+        },
+        "availableSlots": [
+            "Tuesday 9:00-10:00 AM",
+            "Thursday 1:00-2:00 PM",
+            "Saturday 3:00-4:00 PM"
+        ],
+        "background": "Jane has a background in sports medicine and nutrition. She specializes in creating tailored fitness plans for her clients and has extensive experience in rehabilitative exercises.",
+        "qualifications": [
+            "Certified Nutrition Specialist (CNS)",
+            "Certified Strength and Conditioning Specialist (CSCS)",
+            "Bachelor's in Sports Medicine"
+        ]
+    },
+    {
+        "name": "Alice Johnson",
+        "image": "https://i.ibb.co/Brr1ZNg/trainer3.jpg",
+        "experience": 5,
+        "socialId": {
+            "twitter": "https://twitter.com/alice_johnson",
+            "instagram": "https://instagram.com/alice.johnson",
+            "linkedin": "https://linkedin.com/in/alice-johnson-87654321"
+        },
+        "availableSlots": [
+            "Monday 8:00-9:00 AM",
+            "Wednesday 11:00 AM-12:00 PM",
+            "Friday 6:00-7:00 PM"
+        ],
+        "background": "Alice is a dynamic fitness instructor known for her high-energy classes and motivational coaching style. She is passionate about helping clients achieve their fitness goals.",
+        "qualifications": [
+            "Certified Group Fitness Instructor",
+            "Yoga Instructor Certification",
+            "Bachelor's in Physical Education"
+        ]
+    },
+    {
+        "name": "Mily Brown",
+        "image": "https://i.ibb.co/sFSdYVC/trainer4.jpg",
+        "experience": 12,
+        "socialId": {
+            "facebook": "https://facebook.com/michael.brown",
+            "twitter": "https://twitter.com/michael_brown",
+            "linkedin": "https://linkedin.com/in/michael-brown-23456789"
+        },
+        "availableSlots": [
+            "Tuesday 10:00-11:00 AM",
+            "Thursday 3:00-4:00 PM",
+            "Saturday 5:00-6:00 PM"
+        ],
+        "background": "Mily is an elite personal trainer with a strong focus on strength training and body transformation. He has a background in competitive bodybuilding and has helped numerous clients achieve their fitness aspirations.",
+        "qualifications": [
+            "Certified Strength and Conditioning Specialist (CSCS)",
+            "Certified Personal Trainer (CPT)",
+            "Bachelor's in Kinesiology"
+        ]
+    },
+    {
+        "name": "Emily Davis",
+        "image": "https://i.ibb.co/55GqmXf/trainer5.webp",
+        "experience": 6,
+        "socialId": {
+            "instagram": "https://instagram.com/emily.davis",
+            "linkedin": "https://linkedin.com/in/emily-davis-34567890",
+            "facebook": "https://facebook.com/emily.davis"
+        },
+        "availableSlots": [
+            "Monday 7:00-8:00 AM",
+            "Wednesday 1:00-2:00 PM",
+            "Friday 5:00-6:00 PM"
+        ],
+        "background": "Emily is a holistic fitness coach who integrates physical training with mental wellness practices. She is a certified yoga instructor and a wellness advocate.",
+        "qualifications": [
+            "Certified Yoga Instructor",
+            "Certified Holistic Health Coach",
+            "Bachelor's in Health and Wellness"
+        ]
+    },
+    {
+        "name": "David Wilson",
+        "image": "https://i.ibb.co/vZY8cDD/trainer8.jpg",
+        "experience": 9,
+        "socialId": {
+            "twitter": "https://twitter.com/david_wilson",
+            "facebook": "https://facebook.com/david.wilson",
+            "instagram": "https://instagram.com/david.wilson"
+        },
+        "availableSlots": [
+            "Tuesday 8:00-9:00 AM",
+            "Thursday 12:00-1:00 PM",
+            "Saturday 2:00-3:00 PM"
+        ],
+        "background": "David is a versatile trainer with expertise in high-intensity interval training (HIIT) and functional fitness. He is dedicated to helping clients improve their athletic performance and overall fitness.",
+        "qualifications": [
+            "Certified Functional Strength Coach (CFSC)",
+            "Certified Personal Trainer (CPT)",
+            "Bachelor's in Exercise Science"
+        ]
+    }
+]
