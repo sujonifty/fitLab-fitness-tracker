@@ -1,4 +1,4 @@
-import { FaAd, FaHome, FaMoneyBill, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaAd, FaHome, FaMoneyBill, FaUsers} from "react-icons/fa";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { SiManageiq } from "react-icons/si";
 import { NavLink, Outlet } from "react-router-dom";
@@ -19,7 +19,7 @@ const Dashboard = () => {
                                     Admin Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/addIClass">
+                                <NavLink to="/dashboard/addClass">
                                 <FaMoneyCheckDollar />
                                     Add new Class</NavLink>
                             </li>

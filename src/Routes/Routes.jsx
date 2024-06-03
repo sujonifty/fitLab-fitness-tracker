@@ -12,6 +12,7 @@ import BeTrainer from "../Pages/BeTrainer/BeTrainer";
 import Dashboard from "../Layout/Dashboard";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 import AllTrainer from "../Pages/Dashboard/AllTrainer/AllTrainer";
+import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
             {
                 path: "allTrainer",
                 element: <AllTrainer></AllTrainer>,
+            },
+            {
+                path: "addClass",
+                element: <AddClass></AddClass>,
             },
         ]
     },

@@ -96,7 +96,7 @@ const AppliedTrainer = () => {
                                                         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                                             <div>
                                                                 <label className="text-base-content " >Name</label>
-                                                                <input name="pdf" readOnly defaultValue={applicant.name} type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                                                <input readOnly defaultValue={applicant.name} name="name" type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                                                             </div>
 
                                                             <div>
@@ -109,7 +109,7 @@ const AppliedTrainer = () => {
                                                             </div>
                                                             <div>
                                                                 <label className="text-base-content " >Skill</label>
-                                                                <input readOnly defaultValue={applicant.skill} name="age" type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                                                <input readOnly defaultValue={applicant.skill} name="skill" type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                                                             </div>
 
                                                         </div>
