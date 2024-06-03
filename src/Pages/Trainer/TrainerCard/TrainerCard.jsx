@@ -20,7 +20,7 @@ const TrainerCard = ({trainer}) => {
 			</svg>
 			<h2 className="text-5xl font-extrabold leading-none"> Hello I'm <br /> {name}</h2>
 			<p className="mt-4 mb-8 text-sm w-8/12">{background}</p>
-			{
+			{/* {
                 socialId.map(id=><div key={id.index} className="mt-4 flex justify-start items-center gap-10 mb-8 text-3xl w-8/12">
                 <Link to={id.twitter}>
                 <FaTwitter></FaTwitter>
@@ -33,7 +33,7 @@ const TrainerCard = ({trainer}) => {
                 </Link>
                 
                 </div>)
-            }
+            } */}
 			<button className="self-start px-10 py-3 text-lg font-medium rounded-3xl dark:bg-violet-600 dark:text-gray-50">Get started</button>
 		</div>
 	</div>

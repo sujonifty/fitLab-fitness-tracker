@@ -5,10 +5,11 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Trainer from "../Pages/Trainer/Trainer/Trainer";
 import Classes from "../Pages/Classes/Classes/Classes";
-import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Profile from "../Pages/Profile/Profile";
 import Forum from "../Pages/Forum/Forum/Forum";
 import PrivateRoute from "./PrivateRoute";
+import BeTrainer from "../Pages/BeTrainer/BeTrainer";
+import Dashboard from "../Layout/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -40,13 +41,22 @@ export const router = createBrowserRouter([
                 element: <Forum></Forum> ,
             },
             {
-                path: "/dashboard",
-                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+                path: "/beTrainer",
+                element: <BeTrainer></BeTrainer> ,
             },
+            // {
+            //     path: "/dashboard",
+            //     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+            // },
             {
                 path: "/profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             },
+            
         ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     },
 ]);
