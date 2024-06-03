@@ -10,6 +10,7 @@ import Forum from "../Pages/Forum/Forum/Forum";
 import PrivateRoute from "./PrivateRoute";
 import BeTrainer from "../Pages/BeTrainer/BeTrainer";
 import Dashboard from "../Layout/Dashboard";
+import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -21,27 +22,27 @@ export const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
-                path: "/register",
+                path: "register",
                 element: <Register></Register>,
             },
             {
-                path: "/login",
+                path: "login",
                 element: <Login></Login> ,
             },
             {
-                path: "/trainer",
+                path: "trainer",
                 element: <Trainer></Trainer> ,
             },
             {
-                path: "/class",
+                path: "class",
                 element: <Classes></Classes> ,
             },
             {
-                path: "/forum",
+                path: "forum",
                 element: <Forum></Forum> ,
             },
             {
-                path: "/beTrainer",
+                path: "beTrainer",
                 element: <BeTrainer></BeTrainer> ,
             },
             // {
@@ -49,14 +50,20 @@ export const router = createBrowserRouter([
             //     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             // },
             {
-                path: "/profile",
+                path: "profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             },
             
         ]
     },
     {
-        path: "/dashboard",
+        path: "dashboard",
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children:[
+            {
+                path: "appliedTrainer",
+                element: <AppliedTrainer></AppliedTrainer>,
+            },
+        ]
     },
 ]);

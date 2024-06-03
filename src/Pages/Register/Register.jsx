@@ -25,7 +25,6 @@ const Register = () => {
                             name: data.name,
                             email: data.email
                         }
-                        console.log(axiosPublic)
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
