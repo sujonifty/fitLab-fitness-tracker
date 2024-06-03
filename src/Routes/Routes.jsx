@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import BeTrainer from "../Pages/BeTrainer/BeTrainer";
 import Dashboard from "../Layout/Dashboard";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
+import AllTrainer from "../Pages/Dashboard/AllTrainer/AllTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
             {
                 path: "appliedTrainer",
                 element: <AppliedTrainer></AppliedTrainer>,
+            },
+            {
+                path: "allTrainer",
+                element: <AllTrainer></AllTrainer>,
             },
         ]
     },
