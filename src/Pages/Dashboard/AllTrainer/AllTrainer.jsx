@@ -14,7 +14,7 @@ const AllTrainer = () => {
             return res.data;
         }
     })
-    console.log(trainers)
+    // console.log(trainers)
     return (
         <div>
             <div className="text-center my-4">
@@ -40,7 +40,7 @@ const AllTrainer = () => {
                                 <td>{trainer?.email}</td>
                                 <td>{trainer?.roll}</td>
                                 <td>
-                                    <button><FaTrash className="text-2xl text-red-600"></FaTrash></button>
+                                    <button ><FaTrash className="text-2xl text-red-600"></FaTrash></button>
                                 </td>
                             
                             </tr>)

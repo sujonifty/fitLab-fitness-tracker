@@ -4,7 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Trainer from "../Pages/Trainer/Trainer/Trainer";
-import Classes from "../Pages/Classes/Classes/Classes";
+import Classes from "../Pages/Classes/AllClasses/AllClasses";
 import Profile from "../Pages/Profile/Profile";
 import Forum from "../Pages/Forum/Forum/Forum";
 import PrivateRoute from "./PrivateRoute";
@@ -13,6 +13,7 @@ import Dashboard from "../Layout/Dashboard";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 import AllTrainer from "../Pages/Dashboard/AllTrainer/AllTrainer";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 
 export const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "class",
-                element: <Classes></Classes> ,
+                element: <AllClasses></AllClasses> ,
             },
             {
                 path: "forum",
