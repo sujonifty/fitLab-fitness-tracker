@@ -113,15 +113,9 @@ const AppliedTrainer = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div>
-                                                            <label className="text-base-content " >Feedback</label>
-                                                            <input id="feedback" required name="feedback" type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
-                                                        </div>
 
                                                         <div className=" flex justify-evenly items-center">
-                                                            <div className="flex justify-center mt-6">
-                                                                <input type="button" onClick={() => handleReject(applicant._id)} value="Reject" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
-                                                            </div>
+                                                            
                                                             <div className="flex justify-center mt-6">
                                                                 <input type="button" onClick={() => handleConfirm(applicant._id)} value="Confirm" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
                                                             </div>
@@ -135,7 +129,7 @@ const AppliedTrainer = () => {
                                     </div>
                                 </td>
                                 {/* <td>
-                                    <label htmlFor="my_modal_7" className="btn text-red-600"><FaEye></FaEye></label>
+                                    <label htmlFor="my_modal_7" className="btn text-red-600">Reject</label>
                         
                                     <input type="checkbox" id="my_modal_7" className="modal-toggle" />
                                     <div className="modal" role="dialog">
@@ -146,7 +140,7 @@ const AppliedTrainer = () => {
                                                     <div className="flex justify-center">
                                                         <img src={applicant.photo} className="w-1/2 rounded-xl mask mask-decagon" alt="" />
                                                     </div>
-                                                    <form onSubmit={() => handleConfirm(applicant._id)}>
+                                                    <form onSubmit={() => handleConfirm(e,applicant._id)}>
                                                         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                                             <div>
                                                                 <label className="text-base-content " >Name</label>
@@ -176,9 +170,7 @@ const AppliedTrainer = () => {
                                                             <div className="flex justify-center mt-6">
                                                                 <input type="submit" value="Reject" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
                                                             </div>
-                                                            <div className="flex justify-center mt-6">
-                                                                <input type="submit" value="Confirm" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
-                                                            </div>
+                                                            
                                                         </div>
                                                     </form>
 

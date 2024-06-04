@@ -12,7 +12,8 @@ const axiosSecure= useAxiosSecure()
         const photo =e.target.photo.value;
         const date =e.target.date.value;
         const tag =e.target.tag.value;
-        const classInfo={className, title, description, photo, date, tag};
+        const trainers=[];
+        const classInfo={className, title, description, photo, date, tag,trainers};
         console.log(classInfo);
         axiosSecure.post('/addClasses', classInfo)
         .then(res=>{
@@ -80,8 +81,8 @@ const axiosSecure= useAxiosSecure()
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Add New Class.</h1>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleAddClass}>
+                    <div className="bg-opacity-20 my-16 text-base-content border-2  border-gray-400 card shrink-0  w-full max-w-sm shadow-2xl bg-base-100">
+                        <form onSubmit={handleAddClass} className="p-5 bg-gray-300 rounded-lg card-body ">
                             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                 <div>
                                     <label className="text-base-content " >Class Name</label>
@@ -112,7 +113,7 @@ const axiosSecure= useAxiosSecure()
                             </div>
 
                             <div className="flex justify-center mt-6">
-                                <input type="submit" value="Add Class" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
+                                <input type="submit" value="Add Class" className="font-bold px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#D2B48C] rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
                             </div>
                         </form>
                     </div>

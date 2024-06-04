@@ -5,7 +5,8 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    // const isAdmin = true;
+    const isAdmin = false;
     return (
         <div className="flex">
             {/* dashboard side-bar */}

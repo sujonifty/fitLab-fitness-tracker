@@ -1,44 +1,85 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import Select from 'react-select';
 
 
 const BeTrainer = () => {
     const { user } = useContext(AuthContext);
-    const axiosPublic= useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
+    const [selectedDays, setSelectedDays] = useState([]);
+    const [selectedSkills, setSelectedSkills] = useState([]);
+    const [mySkill, setMySkill] = useState([]);
+    const [availableDays, setAvailableDays] = useState([]);
+    useEffect(() => {
+        const allSkill = selectedSkills.map(skill => skill.value);
+        setMySkill(allSkill);
+    }, [selectedSkills])
+    useEffect(() => {
+        const allDay = selectedDays.map(day => day.value);
+        setAvailableDays(allDay);
+    }, [selectedDays])
+    console.log(mySkill)
+    console.log(availableDays)
     const handleBeTrainer = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const photo = e.target.photo.value;
         const age = e.target.age.value;
-        const skill = e.target.skill.value;
-        const day = e.target.day.value;
         const time = e.target.time.value;
-        const status ='Pending';
-        const applicantInfo = { name, email, photo, age, skill, day, time, status }
-        // console.log(applicantInfo)
+        const status = 'Pending';
+        const applicantInfo = { name, email, photo, age, mySkill, selectedDays, time, status }
+        console.log(applicantInfo)
         axiosPublic.post('/appliedTrainer', applicantInfo)
-        .then(res=>{
-            console.log(res.data);
-            if(res.data.insertedId){
-                Swal.fire({
-                    icon: "success",
-                    title: "Submission Successfully",
-                    showConfirmButton: false,
-                    timer: 2500
-                });
-            }
-        })
-        .catch(error => {
-            if (error.message) {
-                console.log(error.message);
-            }
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Applied Successfully",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+            })
+            .catch(error => {
+                if (error.message) {
+                    console.log(error.message);
+                }
 
-        })
+            })
     }
+    const days = [
+
+        { value: 'saturday', label: 'Saturday' },
+        { value: 'sunday', label: 'Sunday' },
+        { value: 'monday', label: 'Monday' },
+        { value: 'tuesday', label: 'Tuesday' },
+        { value: 'wednesday', label: 'Wednesday' },
+        { value: 'thursday', label: 'Thursday' },
+        { value: 'friday', label: 'Friday' }
+    ];
+
+
+    const handleChange = (selectedOptions) => {
+        setSelectedDays(selectedOptions);
+    };
+    const skills = [
+        { value: 'Passionate', label: 'Passionate' },
+        { value: 'Anatomy', label: 'Anatomy' },
+        { value: 'Kinesiology', label: 'Kinesiology' },
+        { value: 'Assessor', label: 'Assessor' },
+        { value: 'Encourager', label: 'Encourager' },
+        { value: 'Certified', label: 'Certified' },
+    ];
+
+
+    const handleSkill = (selectedOptions) => {
+        setSelectedSkills(selectedOptions);
+    };
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/pzRtWs9/betrainer.jpg)' }}>
             <div className="hero-overlay bg-opacity-60"></div>
@@ -76,32 +117,40 @@ const BeTrainer = () => {
                                 <label className="label">
                                     <span className="label-text">Skills</span>
                                 </label>
-                                <select name="skill" className="mx-auto select select-bordered w-full ">
-                                    <option disabled selected>Skills</option>
-                                    <option>YOGA</option>
-                                    <option>CARDIO BURN</option>
-                                </select>
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Avaiable Day</span>
-                                </label>
-                                <select name="day" className="select select-bordered w-full ">
-                                    <option>Saturday</option>
-                                    <option>Sunday</option>
-                                    <option>Monday</option>
-                                    <option>Tuesday</option>
-                                    <option>wednesday</option>
-                                    <option>Thursday</option>
-                                    <option>Friday</option>
-                                </select>
+                                <Select
+                                    isMulti
+                                    name="skill"
+                                    options={skills}
+                                    className="basic-multi-select rounded-xl"
+                                    classNamePrefix="select"
+                                    onChange={handleSkill}
+                                    value={selectedSkills}
+                                    placeholder="Select skills..."
+                                />
+
+
                             </div>
 
                             <div className="form-control  ">
                                 <label className="label">
+                                    <span className="label-text">Available Day</span>
+                                </label>
+                                <Select
+                                    isMulti
+                                    name="day"
+                                    options={days}
+                                    className="basic-multi-select rounded-xl"
+                                    classNamePrefix="select"
+                                    onChange={handleChange}
+                                    value={selectedDays}
+                                    placeholder="Select available days..."
+                                />
+                            </div>
+                            <div className="form-control  ">
+                                <label className="label">
                                     <span className="label-text">Time</span>
                                 </label>
-                                <input name="time" type="time" placeholder="Available Time" className="input input-bordered" required />
+                                <input name="time" type="number" placeholder="Available Time Per Day" className="input input-bordered" required />
                             </div>
 
                             <div className="form-control  mt-6">
