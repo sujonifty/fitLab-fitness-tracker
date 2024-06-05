@@ -1,12 +1,13 @@
-import { FaAd, FaHome, FaMoneyBill, FaUsers} from "react-icons/fa";
+import { FaAd, FaHome, FaMoneyBill, FaUsers } from "react-icons/fa";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
+import { MdUnsubscribe } from "react-icons/md";
 import { SiManageiq } from "react-icons/si";
 import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
-    // const isAdmin = true;
-    const isAdmin = false;
+    const isAdmin = true;
+    // const isAdmin = false;
     return (
         <div className="flex">
             {/* dashboard side-bar */}
@@ -17,11 +18,18 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/adminHome">
                                     <FaHome></FaHome>
-                                    Admin Home</NavLink>
+                                    Admin Home
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/subscriber">
+                                    <MdUnsubscribe />
+                                    Subscribers
+                                </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/addClass">
-                                <FaMoneyCheckDollar />
+                                    <FaMoneyCheckDollar />
                                     Add new Class</NavLink>
                             </li>
                             <li>
@@ -32,7 +40,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/appliedTrainer">
                                     <FaUsers></FaUsers>
-                                    Applied Trainer:</NavLink>
+                                    Applied Trainer</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/allTrainer">

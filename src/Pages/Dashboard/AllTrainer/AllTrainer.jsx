@@ -54,3 +54,18 @@ const AllTrainer = () => {
 };
 
 export default AllTrainer;
+
+{/* <Table>
+                <Table.Head>
+                    <Table.HeadCell>Name</Table.HeadCell>
+                    <Table.HeadCell>Email</Table.HeadCell>
+                    <Table.HeadCell>Roll</Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">                   
+                        <Table.Cell>Sliver</Table.Cell>
+                        <Table.Cell>Laptop</Table.Cell>
+                        <Table.Cell>$2999</Table.Cell>
+                    </Table.Row>
+                </Table.Body>
+            </Table> */}

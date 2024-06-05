@@ -10,13 +10,11 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 import Select from 'react-select';
 
 
-
-
 const AddSlot = () => {
-    const {user}=useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [selectDays, setSelectDays] = useState([]);
+    const [selectedClasses, setSelectedClasses] = useState([]);
     const axiosSecure = useAxiosSecure();
-const [preDay,setPreDay]=useState()
     const { data: trainers = [], refetch } = useQuery({
         queryKey: ['trainer'],
         queryFn: async () => {
@@ -24,44 +22,44 @@ const [preDay,setPreDay]=useState()
             return res.data;
         }
     })
-//     const [trainerD,setTrainerD]=useState({})
-//    useEffect(()=>{
-//     trainers.map(info=>{
-//         setTrainerD(info);   
-//     })
-//    },[])
-//     console.log('trainerInfo',trainerD)
-    console.log('trainerInfo',trainers)
-const {selectedDays}=trainers
-console.log('trainerday',selectedDays)
-    // const days = [
-
-    //     { value: 'saturday', label: 'Saturday' },
-    //     { value: 'sunday', label: 'Sunday' },
-    //     { value: 'monday', label: 'Monday' },
-    //     { value: 'tuesday', label: 'Tuesday' },
-    //     { value: 'wednesday', label: 'Wednesday' },
-    //     { value: 'thursday', label: 'Thursday' },
-    //     { value: 'friday', label: 'Friday' }
-    // ];
-
-
+    const { selectedDays, time } = trainers
     const handleChange = (selectedOptions) => {
         setSelectDays(selectedOptions);
     };
+
+    const classes = [
+
+        { value: 'Yoga', label: 'Yoga' },
+        { value: 'Aerial yoga', label: 'Aerial yoga' },
+        { value: 'Fitness', label: 'Fitness' },
+        { value: 'Crossfit', label: 'Crossfit' },
+        { value: 'Cardio', label: 'Cardio' },
+    ];
+    const handleClasses = (selectedOptions) => {
+        setSelectedClasses(selectedOptions);
+    };
+
+
+    const handleAddSlot = (e) => {
+        e.preventDefault();
+        const slotName=e.target.slotName.value;
+        const slotTime=e.target.slotTime.value;
+        const slotInfo={slotName, slotTime,selectDays,selectedClasses}
+        console.log(slotInfo)
+    }
     return (
-        <form className="flex max-w-md flex-col gap-4">
+        <form onSubmit={handleAddSlot} className="flex max-w-md flex-col gap-4">
             <div>
                 <div className="mb-2 block">
                     <Label value=" Slot name" />
                 </div>
-                <TextInput type="text" placeholder="Example: morning" required />
+                <TextInput type="text" name="slotName" placeholder="Example: morning" required />
             </div>
             <div>
                 <div className="mb-2 block">
                     <Label value="Slot time" />
                 </div>
-                <TextInput type="number" placeholder="example: 1 hour" required />
+                <TextInput type="number" name="slotTime" placeholder="example: 1 hour" required />
             </div>
             <div>
                 <div className="mb-2 block">
@@ -75,6 +73,21 @@ console.log('trainerday',selectedDays)
                     classNamePrefix="select"
                     onChange={handleChange}
                     value={selectDays}
+                    placeholder="Select available days..."
+                />
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label value="Available Class" />
+                </div>
+                <Select
+                    isMulti
+                    name="className"
+                    options={classes}
+                    className="basic-multi-select rounded-xl"
+                    classNamePrefix="select"
+                    onChange={handleClasses}
+                    value={selectedClasses}
                     placeholder="Select available days..."
                 />
             </div>

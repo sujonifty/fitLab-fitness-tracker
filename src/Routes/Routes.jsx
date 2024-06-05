@@ -15,6 +15,7 @@ import AllTrainer from "../Pages/Dashboard/AllTrainer/AllTrainer";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 import AddSlot from "../Pages/Dashboard/Trainer/AddSlot/AddSlot";
+import Subscriber from "../Pages/Dashboard/Subscriber/Subscriber";
 
 export const router = createBrowserRouter([
     {
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
             {
                 path: "addSlot",
                 element: <AddSlot></AddSlot>,
+            },
+            {
+                path: "subscriber",
+                element: <Subscriber></Subscriber>,
             },
         ]
     },
