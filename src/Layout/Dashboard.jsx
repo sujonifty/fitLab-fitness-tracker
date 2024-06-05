@@ -6,8 +6,8 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
-    // const isAdmin = false;
+    // const isAdmin = true;
+    const isAdmin = false;
     return (
         <div className="flex">
             {/* dashboard side-bar */}
@@ -16,7 +16,7 @@ const Dashboard = () => {
                     {
                         isAdmin ? <>
                             <li>
-                                <NavLink to="/dashboard/adminHome">
+                                <NavLink to="/dashboard">
                                     <FaHome></FaHome>
                                     Admin Home
                                 </NavLink>

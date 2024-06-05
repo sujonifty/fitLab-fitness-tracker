@@ -14,7 +14,7 @@ const AllTrainer = () => {
             return res.data;
         }
     })
-    // console.log(trainers)
+    console.log(trainers)
     return (
         <div>
             <div className="text-center my-4">
