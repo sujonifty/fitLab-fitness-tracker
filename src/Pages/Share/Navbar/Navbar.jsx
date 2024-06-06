@@ -44,6 +44,8 @@ const Navbar = () => {
                                     <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
                                     <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
                                     <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/forum">Forums</NavLink>
+
                                    
                                 </>
                         }
@@ -70,7 +72,8 @@ const Navbar = () => {
                                 <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/">Home</NavLink>
                                 <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/trainer">All Trainer</NavLink>
                                 <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/class">All Classes</NavLink>
-                                
+                                <NavLink className={({ isActive }) => isActive ? "btn bg-[#04c70e] " : "btn bg-base-300"} to="/forum">Forums</NavLink>
+
                             </>
                     }
                 </ul>

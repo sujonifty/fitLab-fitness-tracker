@@ -17,6 +17,7 @@ import AllClasses from "../Pages/Classes/AllClasses/AllClasses";
 import AddSlot from "../Pages/Dashboard/Trainer/AddSlot/AddSlot";
 import Subscriber from "../Pages/Dashboard/Subscriber/Subscriber";
 import ManageSlot from "../Pages/Dashboard/Trainer/ManageSlot/ManageSlot";
+import ForumPost from "../Pages/Dashboard/ForumPost/ForumPost";
 
 export const router = createBrowserRouter([
     {
@@ -51,10 +52,6 @@ export const router = createBrowserRouter([
                 path: "beTrainer",
                 element: <BeTrainer></BeTrainer> ,
             },
-            // {
-            //     path: "/dashboard",
-            //     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-            // },
             {
                 path: "profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
@@ -90,6 +87,11 @@ export const router = createBrowserRouter([
                 path: "manageSlot",
                 element: <ManageSlot></ManageSlot>,
             },
+            {
+                path: "addForum",
+                element: <ForumPost></ForumPost>,
+            },
+            
         ]
     },
 ]);
