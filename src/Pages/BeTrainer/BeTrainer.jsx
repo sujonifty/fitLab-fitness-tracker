@@ -17,12 +17,10 @@ const BeTrainer = () => {
         const allSkill = selectedSkills.map(skill => skill.value);
         setMySkill(allSkill);
     }, [selectedSkills])
-    useEffect(() => {
-        const allDay = selectedDays.map(day => day.value);
-        setAvailableDays(allDay);
-    }, [selectedDays])
-    console.log(mySkill)
-    console.log(availableDays)
+    // useEffect(() => {
+    //     const allDay = selectedDays.map(day => day.value);
+    //     setAvailableDays(allDay);
+    // }, [selectedDays])
     const handleBeTrainer = (e) => {
         e.preventDefault();
         const name = e.target.name.value;

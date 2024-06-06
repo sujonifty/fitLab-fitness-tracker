@@ -2,6 +2,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrash } from "react-icons/fa";
+import { Table } from "flowbite-react";
+import Swal from "sweetalert2";
 
 
 
@@ -14,40 +16,69 @@ const AllTrainer = () => {
             return res.data;
         }
     })
-    console.log(trainers)
+    // console.log(trainers)
+    const handleTrainer = (trainer) => {
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, remove it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.patch(`/removeTrainer/${trainer._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.modifiedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: `${trainer.name} is removed!`,
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div>
             <div className="text-center my-4">
                 <h2 className="text-3xl">Total trainers: {trainers.length}</h2>
             </div>
             <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>roll</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table>
+                    <Table.Head>
+                        <Table.HeadCell></Table.HeadCell>
+                        <Table.HeadCell>Name</Table.HeadCell>
+                        <Table.HeadCell>Email</Table.HeadCell>
+                        <Table.HeadCell>Roll</Table.HeadCell>
+                        <Table.HeadCell>Action</Table.HeadCell>
+                    </Table.Head>
+                    <Table.Body className="divide-y">
                         {
-                            trainers.map((trainer, index) => <tr key={trainer._id}>
-                                <th>{index + 1}</th>
-                                <td>{trainer?.name}</td>
-                                <td>{trainer?.email}</td>
-                                <td>{trainer?.roll}</td>
-                                <td>
-                                    <button ><FaTrash className="text-2xl text-red-600"></FaTrash></button>
-                                </td>
-                            
-                            </tr>)
+                            trainers.map((trainer, index) => <Table.Row key={trainer._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                                <Table.Cell>{index + 1}</Table.Cell>
+                                <Table.Cell>{trainer?.name}</Table.Cell>
+                                <Table.Cell>{trainer?.email}</Table.Cell>
+                                <Table.Cell>{trainer?.roll}</Table.Cell>
+                                <Table.Cell>
+                                    <button onClick={() => handleTrainer(trainer)}>
+                                        <FaTrash className="text-2xl text-red-600"></FaTrash>
+                                    </button>
+                                </Table.Cell>
+                            </Table.Row>)
                         }
 
-                    </tbody>
-                </table>
+                    </Table.Body>
+                </Table>
             </div>
         </div>
     );
@@ -55,17 +86,3 @@ const AllTrainer = () => {
 
 export default AllTrainer;
 
-{/* <Table>
-                <Table.Head>
-                    <Table.HeadCell>Name</Table.HeadCell>
-                    <Table.HeadCell>Email</Table.HeadCell>
-                    <Table.HeadCell>Roll</Table.HeadCell>
-                </Table.Head>
-                <Table.Body className="divide-y">
-                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">                   
-                        <Table.Cell>Sliver</Table.Cell>
-                        <Table.Cell>Laptop</Table.Cell>
-                        <Table.Cell>$2999</Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-            </Table> */}

@@ -1,8 +1,10 @@
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 const AddClass = () => {
+    const [errorInfo, setErrorInfo]=useState('');
 const axiosSecure= useAxiosSecure()
     const handleAddClass=(e)=>{
         e.preventDefault();
@@ -15,9 +17,9 @@ const axiosSecure= useAxiosSecure()
         const trainers=[];
         const classInfo={className, title, description, photo, date, tag,trainers};
         console.log(classInfo);
-        axiosSecure.post('/addClasses', classInfo)
+        axiosSecure.post(`/addClasses/?adminClass=${className}`, classInfo)
         .then(res=>{
-            console.log(res.data);
+            setErrorInfo(res.data.message);
             if(res.data.insertedId){
                 Swal.fire({
                     icon: "success",
@@ -29,7 +31,7 @@ const axiosSecure= useAxiosSecure()
         })
         .catch(error => {
             if (error.message) {
-                console.log(error.message);
+                console(error.message);
             }
 
         })
@@ -87,6 +89,9 @@ const axiosSecure= useAxiosSecure()
                                 <div>
                                     <label className="text-base-content " >Class Name</label>
                                     <input name="className" required type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
+                                    {
+                                        errorInfo? <p className="text-red-600"><small>{errorInfo}</small></p>:''
+                                    }
                                 </div>
                                 <div>
                                     <label className="text-base-content " >Class Title</label>
