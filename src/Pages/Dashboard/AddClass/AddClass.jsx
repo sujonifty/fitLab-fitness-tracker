@@ -90,7 +90,7 @@ const axiosSecure= useAxiosSecure()
                                     <label className="text-base-content " >Class Name</label>
                                     <input name="className" required type="text" className="block w-full px-4 py-2 mt-2 text-base-content bg-base-100 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                                     {
-                                        errorInfo? <p className="text-red-600"><small>{errorInfo}</small></p>:''
+                                        errorInfo? <p className="text-red-600"><small>{errorInfo}</small></p>: ''
                                     }
                                 </div>
                                 <div>

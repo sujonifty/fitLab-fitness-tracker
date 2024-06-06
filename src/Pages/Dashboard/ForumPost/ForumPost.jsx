@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ForumPost = () => {
     const {user}=useContext(AuthContext);
@@ -19,12 +20,31 @@ const ForumPost = () => {
         e.preventDefault();
         const postTitle=e.target.title.value;
         const postDescription=e.target.description.value;
+        const image=e.target.photo.value;
         const author=name;
         const authorEmail=email;
         const authorPhoto=photo;
         const authorRoll=roll;
-        const postInfo={postTitle, postDescription,author,authorEmail,authorPhoto,authorRoll };
+        const postInfo={postTitle, postDescription,image,author,authorEmail,authorPhoto,authorRoll };
         console.log(postInfo);
+        axiosSecure.post(`/addPost`, postInfo)
+        .then(res=>{
+            console.log(res.data);
+            if(res.data.insertedId){
+                Swal.fire({
+                    icon: "success",
+                    title: "Post added Successfully",
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        })
+        .catch(error => {
+            if (error.message) {
+                console(error.message);
+            }
+
+        })
     }
     return (
         <Card className="max-w-sm">
