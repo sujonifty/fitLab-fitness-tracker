@@ -22,7 +22,7 @@ const Trainer = () => {
     console.log()
     return (
         <div>
-            <div className="gird grid-cols-1 gap-10 my-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 my-16">
                 {
                     trainers.map(trainer=><TrainerCard key={trainer._id} trainer={trainer}></TrainerCard>)
                 }
