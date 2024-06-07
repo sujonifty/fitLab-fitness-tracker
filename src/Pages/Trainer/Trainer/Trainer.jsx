@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import TrainerCard from "../TrainerCard/TrainerCard";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +12,7 @@ const Trainer = () => {
     //         setTrainers(res.data);
     //     })
     // },[])
-    const { data: trainers = [], refetch } = useQuery({
+    const { data: trainers = [] } = useQuery({
         queryKey: ['trainers'],
         queryFn: async () => {
             const res = await axiosPublic.get('/trainers');
@@ -22,7 +22,7 @@ const Trainer = () => {
     console.log()
     return (
         <div>
-            <div>
+            <div className="gird grid-cols-1 gap-10 my-16">
                 {
                     trainers.map(trainer=><TrainerCard key={trainer._id} trainer={trainer}></TrainerCard>)
                 }
