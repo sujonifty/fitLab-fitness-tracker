@@ -4,13 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Card, Dropdown } from "flowbite-react";
 const TrainerCard = ({ trainer }) => {
-    const {_id, name,email,time, photo, experience, socialId, availableSlots, background, qualifications } = trainer;
-    const bgImg = {
-        backgroundImage: `url(${photo})`,
-        height: '100vh',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    };
+    const {_id, name,email,time, photo, experience } = trainer;
+
     return (
         // <section className="dark:bg-gray-100 dark:text-gray-800">
         //     <div className="container flex flex-col mx-auto lg:flex-row border">

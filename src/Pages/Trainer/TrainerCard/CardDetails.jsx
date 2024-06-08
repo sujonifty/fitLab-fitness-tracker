@@ -1,44 +1,76 @@
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Slot from "./Slot";
 
 
 const CardDetails = () => {
-    const singleTrainer= useLoaderData();
-    console.log(singleTrainer)
+    
+    const singleTrainer = useLoaderData();
+    const axiosSecure=useAxiosSecure();
+    const { _id, name, email, time, photo, mySkill, } = singleTrainer;
+
+    const { data: slots = [] } = useQuery({
+        queryKey: ['trainer'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/cardDetail/?trainer=${singleTrainer?.email}`);
+            // console.log(singleTrainer?.email)
+            return res.data;
+        }
+    })
+    console.log(slots)
+    // console.log(mySkill)
     return (
-        <section className="bg-gray-800 text-gray-100">
+        <section className="bg-base-200 text-gray-100">
             <div className="container flex flex-col-reverse mx-auto lg:flex-row">
-                <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 bg-violet-400 text-gray-900">
-                    <div className="flex space-x-2 sm:space-x-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                        <div className="space-y-2">
-                            <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                            <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
-                        </div>
-                    </div>
-                    <div className="flex space-x-2 sm:space-x-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                        <div className="space-y-2">
-                            <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                            <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
-                        </div>
-                    </div>
-                    <div className="flex space-x-2 sm:space-x-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                        <div className="space-y-2">
-                            <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                            <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
-                        </div>
+                <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 bg-violet-100 text-gray-900">
+                    <div className="max-w-md p-6 overflow-hidden rounded-lg shadow bg-base-200 text-gray-100">
+                        <article>
+                            <div className="flex items-center mt-8 space-x-4">
+                                <img src={photo} alt="" className="w-10 h-10 rounded-full bg-gray-500" />
+                                <div>
+                                    <h3 className="text-sm text-black font-bold">{name}</h3>
+                                    <time className="text-sm text-gray-700">{email}</time>
+                                </div>
+                            </div>
+
+                            <div className="flex justify-center gap-10">
+                                <div>
+                                    <h2 className="mt-6 text-black font-semibold">Qualifications</h2>
+                                    <ul className="ml-6 text-gray-700">
+                                        <li>{singleTrainer?.mySkill[0]}</li>
+                                        <li>{singleTrainer?.mySkill[1]}</li>
+                                        <li>{singleTrainer?.mySkill[2]}</li>
+                                        <li>{singleTrainer?.mySkill[3]}</li>
+                                        <li>{singleTrainer?.mySkill[4]}</li>
+                                        <li>{singleTrainer?.mySkill[5]}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p className="mt-6 text-black font-semibold">Available Time</p>
+                                    <p className=" text-gray-700">Per day: {time} hours</p>
+                                </div>
+                            </div>
+
+                        </article>
                     </div>
                 </div>
-                <div className="lg:w-1/2 xl:w-3/5 bg-gray-800">
-                    <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-                        <img src="https://source.unsplash.com/640x480/" alt="" className="rounded-lg shadow-lg bg-gray-500 aspect-video sm:min-h-96" />
+                <div className="lg:w-1/2 xl:w-3/5">
+                    <div className="flex items-center justify-center p-4 md:p-8 lg:p-5">
+                        <div className="max-w-md p-6 overflow-hidden rounded-lg shadow  text-gray-100">
+                            <article>
+                                
+
+                                <div className="flex justify-center gap-10">
+                                    
+                                    {
+                                        slots.map(slot=><Slot key={slot._id} slot={slot}></Slot>)
+                                    }
+                                </div>
+
+                            </article>
+                        </div>
                     </div>
                 </div>
             </div>
