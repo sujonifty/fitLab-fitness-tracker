@@ -1,10 +1,10 @@
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Card, Dropdown } from "flowbite-react";
 const TrainerCard = ({ trainer }) => {
-    const { name,email,time, photo, experience, socialId, availableSlots, background, qualifications } = trainer;
+    const {_id, name,email,time, photo, experience, socialId, availableSlots, background, qualifications } = trainer;
     const bgImg = {
         backgroundImage: `url(${photo})`,
         height: '100vh',
@@ -39,14 +39,14 @@ const TrainerCard = ({ trainer }) => {
         //         </div>
         //     </div>
         // </section>
-        <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 text-gray-100">
+        <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-base-200 text-gray-100">
                     <img src={photo} alt="" className="w-32 h-32 mx-auto rounded-full bg-gray-500 aspect-square" />
                     <div className="space-y-4 text-center divide-y divide-gray-700">
                         <div className="my-2 space-y-1">
-                            <h2 className="text-xl font-semibold sm:text-2xl">{name}</h2>
-                            <p className="px-5 text-xs sm:text-base text-gray-400">{email}</p>
-                            <p className="px-5 text-xs sm:text-base text-gray-400">Available time: {time} hours</p>
-                            <p className="px-5 text-xs sm:text-base text-gray-400">Experience: {experience} years</p>
+                            <h2 className="text-xl font-semibold text-gray-700 sm:text-2xl">{name}</h2>
+                            <p className="px-5 text-xs sm:text-base text-gray-500">{email}</p>
+                            <p className="px-5 text-xs sm:text-base text-gray-500">Available time: {time} hours</p>
+                            <p className="px-5 text-xs sm:text-base text-gray-500">Experience: {experience} years</p>
                         </div>
                         <div className="flex justify-center pt-2 space-x-4 align-center">
                             <a rel="noopener noreferrer" href="#" aria-label="GitHub" className="p-2 rounded-md text-gray-100 hover:text-violet-400">
@@ -70,9 +70,9 @@ const TrainerCard = ({ trainer }) => {
                                 </svg>
                             </a>
                         </div>
-                        <Link className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                        <NavLink to={`/cardDetails/${_id}`} className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                             Know more..
-                        </Link>
+                        </NavLink>
                     </div>
                 </div>
     );

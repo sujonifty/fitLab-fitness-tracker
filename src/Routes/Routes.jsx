@@ -18,6 +18,7 @@ import AddSlot from "../Pages/Dashboard/Trainer/AddSlot/AddSlot";
 import Subscriber from "../Pages/Dashboard/Subscriber/Subscriber";
 import ManageSlot from "../Pages/Dashboard/Trainer/ManageSlot/ManageSlot";
 import ForumPost from "../Pages/Dashboard/ForumPost/ForumPost";
+import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
 
 export const router = createBrowserRouter([
     {
@@ -56,7 +57,11 @@ export const router = createBrowserRouter([
                 path: "profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             },
-            
+            {
+                path: "cardDetails/:id",
+                element: <CardDetails></CardDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/trainerCard/${params.id}`)
+            },
         ]
     },
     {
@@ -91,6 +96,7 @@ export const router = createBrowserRouter([
                 path: "addForum",
                 element: <ForumPost></ForumPost>,
             },
+            
             
         ]
     },
