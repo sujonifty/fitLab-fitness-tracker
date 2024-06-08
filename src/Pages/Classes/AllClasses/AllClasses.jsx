@@ -13,10 +13,11 @@ const axiosPublic=useAxiosPublic();
             return res.data;
         }
     })
+
     console.log(allClasses)
     return (
         <div>
-            <div className="grid grid-cols-1 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {
                     allClasses.map(item=><ClassCard key={item._id} item={item}></ClassCard>)
                 }
