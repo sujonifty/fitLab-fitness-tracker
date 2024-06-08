@@ -1,7 +1,7 @@
 import { Card } from 'flowbite-react';
 import PropTypes from 'prop-types';
 // import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Avatar } from "flowbite-react";
 // import { Button, Modal } from "flowbite-react";
 // import { useState } from "react";
@@ -53,65 +53,69 @@ const ClassCard = ({ item }) => {
 
             <div className='grid grid-cols-5 text-base'>
                 {
-                    trainers.map(trainer =><Avatar key={trainer.index} title={`Trainer: ${trainer.name}`}  img={trainer?.photo} rounded bordered color="light" />
-                    // <div key={trainer.index}>
-                    //     <Button onClick={() => setOpenModal()}>
-                    //         <Avatar img={trainer?.photo} rounded bordered color="light" />
+                    trainers.map(trainer => 
+                    <Link to={`/cardDetails/${trainer.email}`} key={trainer.index}>
+                        <Avatar title={`Trainer: ${trainer.name}`} img={trainer?.photo} rounded bordered color="light" />
 
-                    //     </Button>
-                    //     <Modal show={openModal} onClose={() => setOpenModal(false)}>
-                    //         <Modal.Header>Terms of Service</Modal.Header>
-                    //         <Modal.Body>
-                    //             <Card className="max-w-sm">
-                    //                 <div className="flex justify-end px-4 pt-4">
-                    //                     <Dropdown inline label="">
-                    //                         <Dropdown.Item>
-                    //                             <a
-                    //                                 href="#"
-                    //                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                    //                             >
-                    //                                 Edit
-                    //                             </a>
-                    //                         </Dropdown.Item>
-                    //                         <Dropdown.Item>
-                    //                             <a
-                    //                                 href="#"
-                    //                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                    //                             >
-                    //                                 Export Data
-                    //                             </a>
-                    //                         </Dropdown.Item>
-                    //                         <Dropdown.Item>
-                    //                             <a
-                    //                                 href="#"
-                    //                                 className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-                    //                             >
-                    //                                 Delete
-                    //                             </a>
-                    //                         </Dropdown.Item>
-                    //                     </Dropdown>
-                    //                 </div>
-                    //                 <div className="flex flex-col items-center pb-10">
-                    //                     <img
-                    //                         alt="Bonnie image"
-                    //                         height="96"
-                    //                         src={trainer?.photo}
-                    //                         width="96"
-                    //                         className="mb-3 rounded-full shadow-lg"
-                    //                     />
-                    //                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{trainer?.name}</h5>
-                    //                     <span className="text-sm text-gray-500 dark:text-gray-400">{trainer?.email}</span>
-                    //                     <div className="mt-4 flex space-x-3 lg:mt-6">
-                    //                         <Link className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
-                    //                             Know more..
-                    //                         </Link>
-                    //                     </div>
-                    //                 </div>
-                    //             </Card>
-                    //         </Modal.Body>
-                    //     </Modal>
+                    </Link>
+                        // <div key={trainer.index}>
+                        //     <Button onClick={() => setOpenModal()}>
+                        //         <Avatar img={trainer?.photo} rounded bordered color="light" />
 
-                    // </div>
+                        //     </Button>
+                        //     <Modal show={openModal} onClose={() => setOpenModal(false)}>
+                        //         <Modal.Header>Terms of Service</Modal.Header>
+                        //         <Modal.Body>
+                        //             <Card className="max-w-sm">
+                        //                 <div className="flex justify-end px-4 pt-4">
+                        //                     <Dropdown inline label="">
+                        //                         <Dropdown.Item>
+                        //                             <a
+                        //                                 href="#"
+                        //                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                        //                             >
+                        //                                 Edit
+                        //                             </a>
+                        //                         </Dropdown.Item>
+                        //                         <Dropdown.Item>
+                        //                             <a
+                        //                                 href="#"
+                        //                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                        //                             >
+                        //                                 Export Data
+                        //                             </a>
+                        //                         </Dropdown.Item>
+                        //                         <Dropdown.Item>
+                        //                             <a
+                        //                                 href="#"
+                        //                                 className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                        //                             >
+                        //                                 Delete
+                        //                             </a>
+                        //                         </Dropdown.Item>
+                        //                     </Dropdown>
+                        //                 </div>
+                        //                 <div className="flex flex-col items-center pb-10">
+                        //                     <img
+                        //                         alt="Bonnie image"
+                        //                         height="96"
+                        //                         src={trainer?.photo}
+                        //                         width="96"
+                        //                         className="mb-3 rounded-full shadow-lg"
+                        //                     />
+                        //                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{trainer?.name}</h5>
+                        //                     <span className="text-sm text-gray-500 dark:text-gray-400">{trainer?.email}</span>
+                        //                     <div className="mt-4 flex space-x-3 lg:mt-6">
+                        //                         <Link className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                        //                             Know more..
+                        //                         </Link>
+                        //                     </div>
+                        //                 </div>
+                        //             </Card>
+                        //         </Modal.Body>
+                        //     </Modal>
+
+                        // </div>
                     )
                 }
             </div>

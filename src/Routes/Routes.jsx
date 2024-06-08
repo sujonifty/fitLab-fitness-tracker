@@ -59,9 +59,9 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             },
             {
-                path: "cardDetails/:id",
+                path: "cardDetails/:email",
                 element: <CardDetails></CardDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/trainerCard/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/trainerCard/${params.email}`)
             },
             {
                 path: "booking/:id",

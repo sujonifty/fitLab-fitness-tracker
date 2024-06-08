@@ -12,7 +12,7 @@ const Booking = () => {
                 <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Advanced plan</h5>
                     <div className="flex items-baseline  justify-center text-gray-900 dark:text-white">
                         <span className="text-3xl font-semibold">$</span>
-                        <span className="text-5xl font-extrabold tracking-tight">1500</span>
+                        <span className="text-5xl font-extrabold tracking-tight">150</span>
                         <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
                     </div>
                     <ul className="my-7 space-y-5">
@@ -160,7 +160,7 @@ const Booking = () => {
                 </Card>
                 <Card className='max-w-sm'>
                     <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Standard plan</h5>
-                    <div className="flex items-baseline  justify-center text-white dark:text-white">
+                    <div className="flex items-baseline  justify-center text-gray-900 dark:text-white">
                         <span className="text-3xl font-semibold">$</span>
                         <span className="text-5xl font-extrabold tracking-tight">99</span>
                         <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
@@ -234,9 +234,9 @@ const Booking = () => {
                                 Access to locker rooms and showers
                             </span>
                         </li>
-                        <li className="flex space-x-3 line-through decoration-gray-500">
+                        <li className="flex space-x-3 decoration-gray-500">
                             <svg
-                                className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+                                className="h-5 w-5 shrink-0 text-cyan-600 dark:text-cyan-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +253,7 @@ const Booking = () => {
                         </li>
                         <li className="flex space-x-3 decoration-gray-500">
                             <svg
-                                className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
+                                className="h-5 w-5 shrink-0 text-cyan-600 dark:text-cyan-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -310,7 +310,7 @@ const Booking = () => {
                 </Card>
                 <Card className='max-w-sm'>
                 <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Basic plan</h5>
-                    <div className="flex items-baseline  justify-center text-white dark:text-white">
+                    <div className="flex items-baseline  justify-center text-gray-900 dark:text-white">
                         <span className="text-3xl font-semibold">$</span>
                         <span className="text-5xl font-extrabold tracking-tight">50</span>
                         <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
