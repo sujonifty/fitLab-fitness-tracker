@@ -19,6 +19,7 @@ import Subscriber from "../Pages/Dashboard/Subscriber/Subscriber";
 import ManageSlot from "../Pages/Dashboard/Trainer/ManageSlot/ManageSlot";
 import ForumPost from "../Pages/Dashboard/ForumPost/ForumPost";
 import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
+import Booking from "../Pages/Trainer/Booking/Booking";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,11 @@ export const router = createBrowserRouter([
                 path: "cardDetails/:id",
                 element: <CardDetails></CardDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/trainerCard/${params.id}`)
+            },
+            {
+                path: "booking/:id",
+                element: <Booking></Booking>,
+                loader: ({ params }) => fetch(`http://localhost:5000/slotBooking/${params.id}`)
             },
         ]
     },
