@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "flowbite-react";
+import { Badge, Button, Kbd, Table } from "flowbite-react";
 import { FaTrash } from "react-icons/fa";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useContext, useEffect, useState } from "react";
@@ -61,16 +61,20 @@ const ManageSlot = () => {
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>Email</Table.HeadCell>
                     <Table.HeadCell>status</Table.HeadCell>
+                    <Table.HeadCell>Available Days</Table.HeadCell>
                     <Table.HeadCell>Action</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
+                        
                         slots.map(slot => <Table.Row key={slot._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell>{slot.slotName}</Table.Cell>
                             <Table.Cell>{slot.email}</Table.Cell>
                             <Table.Cell>{slot.slotTime}</Table.Cell>
-                            <Table.Cell>
-                            
+                            <Table.Cell className=" flex flex-wrap gap-2">
+                            {
+                            slot.selectDays.map(day=><Kbd color="gray w-10"key={day.index}>{day.value}</Kbd>)
+                            }
                             </Table.Cell>
                             <Table.Cell>
                                 <button onClick={() => handleDeleteUser(slot)}>

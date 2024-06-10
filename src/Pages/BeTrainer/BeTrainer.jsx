@@ -52,13 +52,13 @@ const BeTrainer = () => {
     }
     const days = [
 
-        { value: 'saturday', label: 'Saturday' },
-        { value: 'sunday', label: 'Sunday' },
-        { value: 'monday', label: 'Monday' },
-        { value: 'tuesday', label: 'Tuesday' },
-        { value: 'wednesday', label: 'Wednesday' },
-        { value: 'thursday', label: 'Thursday' },
-        { value: 'friday', label: 'Friday' }
+        { value: 'sat', label: 'Saturday' },
+        { value: 'sun', label: 'Sunday' },
+        { value: 'mon', label: 'Monday' },
+        { value: 'tue', label: 'Tuesday' },
+        { value: 'wed', label: 'Wednesday' },
+        { value: 'thu', label: 'Thursday' },
+        { value: 'fri', label: 'Friday' }
     ];
 
 

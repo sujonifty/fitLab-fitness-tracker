@@ -15,6 +15,7 @@ const ForumPost = () => {
             return res.data;
         }
     })
+    
     const {name,email,photo,roll}=(authors)
     const handlePost=(e)=>{
         e.preventDefault();
@@ -25,8 +26,9 @@ const ForumPost = () => {
         const authorEmail=email;
         const authorPhoto=photo;
         const authorRoll=roll;
-        const postInfo={postTitle, postDescription,image,author,authorEmail,authorPhoto,authorRoll };
-        console.log(postInfo);
+        const postTime =new Date();
+        const postInfo={postTitle, postDescription,image,author,authorEmail,authorPhoto,authorRoll,postTime };
+        console.log('postInfo',postInfo);
         axiosSecure.post(`/addPost`, postInfo)
         .then(res=>{
             console.log(res.data);

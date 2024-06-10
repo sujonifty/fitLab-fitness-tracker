@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const ForumCard = ({post}) => {
     // console.log(post)
-    const {author, authorEmail, authorPhoto, authorRoll,postTitle,postDescription,image}=post;
+    const {author, authorEmail, authorPhoto, authorRoll,postTitle,postDescription,image,postTime}=post;
     return (
         <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-base-200 ">
             <div className="flex space-x-4">
@@ -10,6 +10,7 @@ const ForumCard = ({post}) => {
                 <div className="flex flex-col space-y-1">
                     <a rel="noopener noreferrer" href="#" className="text-sm text-gray-700 font-semibold">{author}</a>
                     <span className="text-xs text-gray-600">{authorRoll}</span>
+                    <span className="text-xs text-gray-600">{postTime.slice(0,10)}</span>
                 </div>
             </div>
             <div>

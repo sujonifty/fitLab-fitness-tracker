@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
             {
                 path: "cardDetails/:email",
                 element: <CardDetails></CardDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/trainerCard/${params.email}`)
+                loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/trainerCard/${params.email}`)
             },
             {
                 path: "booking/:id",
                 element: <Booking></Booking>,
-                loader: ({ params }) => fetch(`http://localhost:5000/slotBooking/${params.id}`)
+                loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/slotBooking/${params.id}`)
             },
         ]
     },
