@@ -226,14 +226,17 @@ const AppliedTrainer = () => {
                     <Table.Body className="divide-y">
                         {
                             applicants.map((applicant) => <Table.Row key={applicant.index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                              
+
                                 <Table.Cell>{applicant?.name}</Table.Cell>
                                 <Table.Cell>{applicant?.email}</Table.Cell>
                                 <Table.Cell>{applicant?.status}</Table.Cell>
 
                                 {
                                     <Table.Cell>
-                                        <Button onClick={() => setOpen(true)}><FaEye></FaEye></Button>
+                                        <Button onClick={() => handleConfirm(applicant?._id)} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                                            accept
+                                        </Button>
+                                        {/* <Button onClick={() => setOpen(true)}><FaEye></FaEye></Button>
                                         <Modal show={openModal} size="md" onClose={() => setOpen(false)} popup>
                                             <Modal.Header />
                                             <Modal.Body>
@@ -262,7 +265,7 @@ const AppliedTrainer = () => {
                                                     </Button>
                                                 </form>
                                             </Modal.Body>
-                                        </Modal>
+                                        </Modal> */}
                                     </Table.Cell>
                                 }
 
@@ -272,7 +275,7 @@ const AppliedTrainer = () => {
 
 
                                         <Modal.Body>
-                                            <form onSubmit={(e)=>handleReject(e,applicant._id)} className="flex max-w-md flex-col gap-4">
+                                            <form onSubmit={(e) => handleReject(e, applicant._id)} className="flex max-w-md flex-col gap-4">
                                                 <div>
                                                     <div className="mb-2 block">
                                                         <Label htmlFor="email1" value="Applicant Name" />
@@ -298,7 +301,7 @@ const AppliedTrainer = () => {
                                                     <TextInput placeholder="Give your feedback" name="feedback" type="text" />
                                                 </div>
 
-                                                <Button  type="submit" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                                                <Button type="submit" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                                                     Reject
                                                 </Button>
                                             </form>

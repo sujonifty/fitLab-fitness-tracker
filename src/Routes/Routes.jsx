@@ -20,6 +20,7 @@ import ManageSlot from "../Pages/Dashboard/Trainer/ManageSlot/ManageSlot";
 import ForumPost from "../Pages/Dashboard/ForumPost/ForumPost";
 import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
 import Booking from "../Pages/Trainer/Booking/Booking";
+import Activity from "../Pages/Member/Activity/Activity";
 
 export const router = createBrowserRouter([
     {
@@ -101,6 +102,10 @@ export const router = createBrowserRouter([
             {
                 path: "addForum",
                 element: <ForumPost></ForumPost>,
+            },
+            {
+                path: "activity",
+                element: <Activity></Activity>,
             },
             
             
