@@ -5,7 +5,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Trainer from "../Pages/Trainer/Trainer/Trainer";
 import Classes from "../Pages/Classes/AllClasses/AllClasses";
-import Profile from "../Pages/Profile/Profile";
+// import Profile from "../Pages/Profile/Profile";
 import Forum from "../Pages/Forum/Forum/Forum";
 import PrivateRoute from "./PrivateRoute";
 import BeTrainer from "../Pages/BeTrainer/BeTrainer";
@@ -21,6 +21,7 @@ import ForumPost from "../Pages/Dashboard/ForumPost/ForumPost";
 import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
 import Booking from "../Pages/Trainer/Booking/Booking";
 import Activity from "../Pages/Member/Activity/Activity";
+import UserProfile from "../Pages/Member/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
     {
@@ -55,10 +56,10 @@ export const router = createBrowserRouter([
                 path: "beTrainer",
                 element: <BeTrainer></BeTrainer> ,
             },
-            {
-                path: "profile",
-                element: <PrivateRoute><Profile></Profile></PrivateRoute>,
-            },
+            // {
+            //     path: "profile",
+            //     element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+            // },
             {
                 path: "cardDetails/:email",
                 element: <CardDetails></CardDetails>,
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
             {
                 path: "activity",
                 element: <Activity></Activity>,
+            },
+            {
+                path: "profile",
+                element: <UserProfile></UserProfile>
             },
             
             

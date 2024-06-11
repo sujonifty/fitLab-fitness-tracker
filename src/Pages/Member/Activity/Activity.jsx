@@ -15,7 +15,7 @@ const Activity = () => {
             return res.data;
         }
     })
-    console.log(users)
+    // console.log(users)
     return (
         <div>
             <div className="overflow-x-auto">
