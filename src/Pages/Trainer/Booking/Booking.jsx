@@ -1,15 +1,39 @@
-import { Card } from "flowbite-react";
-import { useLoaderData } from "react-router-dom";
+import { Card, Kbd } from "flowbite-react";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Booking = () => {
     const singleSlot = useLoaderData()
-    console.log(singleSlot)
+    console.log(singleSlot);
+    const { trainerInfo, selectDays, selectedClasses, slotTime, slotName } = singleSlot;
+    const { name, email, photo } = trainerInfo;
     return (
         <div>
+            <div className="p-5 mx-auto sm:p-10 md:p-16 bg-base-100 text-gray-100">
+                <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
+                    <img src="https://i.ibb.co/0DhHKLZ/trainer.jpg" alt="" className="w-full object-fill opacity-50 h-60 sm:h-96 bg-gray-500 " />
+                    <div className="p-6 z-20 pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md ">
+                        <Card className="max-w-sm" imgSrc={photo} horizontal>
+                            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                Slot name: {slotName}
+                            </h5>
+                            <p className="font-normal text-gray-700 dark:text-gray-400">Available {slotTime} hours per day.</p>
+                            <p className="font-normal text-gray-700 dark:text-gray-400"><span className="font-semibold">Trainer:</span> {name}</p>
+                            <p className="font-normal text-gray-700 dark:text-gray-400"><span className="font-semibold">Email:</span> {email}</p>
+                            <p className="font-normal text-gray-700 dark:text-gray-400"><span className="font-semibold">Class:</span> {selectedClasses.value}</p>
+                            <ul className="font-normal text-gray-700 dark:text-gray-400 grid grid-cols-4">
+                                {
+                                    selectDays.map(day => <li key={day.index}><Kbd color="gray w-10">{day.value}</Kbd></li>)
+                                }
+                            </ul>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                
+
                 <Card className='max-w-sm'>
-                <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Advanced plan</h5>
+                    <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Advanced plan</h5>
                     <div className="flex items-baseline  justify-center text-gray-900 dark:text-white">
                         <span className="text-3xl font-semibold">$</span>
                         <span className="text-5xl font-extrabold tracking-tight">150</span>
@@ -98,7 +122,7 @@ const Booking = () => {
                                 />
                             </svg>
                             <span className="text-base font-normal leading-tight text-gray-500">
-                            Gym access during operating hours.
+                                Gym access during operating hours.
                             </span>
                         </li>
                         <li className="flex space-x-3 decoration-gray-500">
@@ -151,12 +175,14 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <button
-                        type="button"
-                        className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                    >
-                        Choose plan
-                    </button>
+                    <Link to={`/payment/${singleSlot?._id}`}>
+                        <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                        >
+                            Choose plan
+                        </button>
+                    </Link>
                 </Card>
                 <Card className='max-w-sm'>
                     <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Standard plan</h5>
@@ -248,7 +274,7 @@ const Booking = () => {
                                 />
                             </svg>
                             <span className="text-base font-normal leading-tight text-gray-500">
-                            Gym access during operating hours.
+                                Gym access during operating hours.
                             </span>
                         </li>
                         <li className="flex space-x-3 decoration-gray-500">
@@ -301,15 +327,17 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <button
-                        type="button"
-                        className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                    >
-                        Choose plan
-                    </button>
+                    <Link to={`/payment/${singleSlot?._id}`}>
+                        <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                        >
+                            Choose plan
+                        </button>
+                    </Link>
                 </Card>
                 <Card className='max-w-sm'>
-                <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Basic plan</h5>
+                    <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Basic plan</h5>
                     <div className="flex items-baseline  justify-center text-gray-900 dark:text-white">
                         <span className="text-3xl font-semibold">$</span>
                         <span className="text-5xl font-extrabold tracking-tight">50</span>
@@ -451,12 +479,14 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <button
-                        type="button"
-                        className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                    >
-                        Choose plan
-                    </button>
+                    <Link to={`/payment/${singleSlot?._id}`}>
+                        <button
+                            type="button"
+                            className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
+                        >
+                            Choose plan
+                        </button>
+                    </Link>
                 </Card>
             </div>
         </div>
