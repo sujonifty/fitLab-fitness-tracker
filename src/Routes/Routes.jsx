@@ -22,6 +22,7 @@ import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
 import Booking from "../Pages/Trainer/Booking/Booking";
 import Activity from "../Pages/Member/Activity/Activity";
 import UserProfile from "../Pages/Member/UserProfile/UserProfile";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,15 @@ export const router = createBrowserRouter([
                 path: "booking/:id",
                 element: <Booking></Booking>,
                 loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/slotBooking/${params.id}`)
+            },
+            // {
+            //     path: "payment/:id",
+            //     element: <Payment></Payment>,
+            //     loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/payment/${params.id}`)
+            // },
+            {
+                path: "payment",
+                element: <Payment></Payment>,
             },
         ]
     },
