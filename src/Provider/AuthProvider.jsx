@@ -7,6 +7,7 @@ import { GoogleAuthProvider } from "firebase/auth/web-extension";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [membership, setMembership] = useState(null);
     const [error, setError]=useState('')
     const [loading, setLoading] = useState(true);
 
@@ -61,6 +62,8 @@ const AuthProvider = ({ children }) => {
         googleSignIn,
         logOut,
         loading,
+        membership,
+        setMembership,
 
     }
     return (
