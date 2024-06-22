@@ -24,7 +24,7 @@ const Activity = () => {
                         <Table.HeadCell></Table.HeadCell>
                         <Table.HeadCell>Name</Table.HeadCell>
                         <Table.HeadCell>Email</Table.HeadCell>
-                        <Table.HeadCell>Roll</Table.HeadCell>
+                        <Table.HeadCell>role</Table.HeadCell>
                         <Table.HeadCell>Feedback</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">

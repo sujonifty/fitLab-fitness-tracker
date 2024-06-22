@@ -9,23 +9,28 @@ import { TbBrandBooking } from "react-icons/tb";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
-    // console.log('Roll',user.roll)
-    // console.log('user',user)
-    // const role = "admin";
-    // const isAdmin=true;
-    const [isAdmin] = useAdmin();
-    // console.log(isAdmin)
+    const axiosSecure= useAxiosSecure()
+    const { data: activeUser = {} } = useQuery({
+        queryKey: ['activeUser'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/activeUser/?email=${user.email}`);
+            return res.data;
+        }
+    })
+    console.log(activeUser)
+    console.log(activeUser.role)
     return (
         <div className="flex">
             {/* dashboard side-bar */}
             <div className="w-64 min-h-screen bg-[#D2B48C]">
                 <ul className="menu p-4">
-                    {
-                        isAdmin ?
+                {activeUser.role === "admin" && (
                             <>
                                 <li>
                                     <NavLink to="/dashboard">
@@ -60,8 +65,8 @@ const Dashboard = () => {
                                         All Trainers</NavLink>
                                 </li>
                             </>
-                            :
-
+                            )}
+                            {activeUser.role === "Trainer" && (
                             <>
                                 <li>
                                     <NavLink to="/dashboard/trainerHome">
@@ -81,8 +86,8 @@ const Dashboard = () => {
                                         Add New slot</NavLink>
                                 </li>
                             </>
-                    }
-                    {/* {role === "member" && (
+                    )}
+                    {activeUser.role === "Member" && (
                         <>
                             <li>
                                 <NavLink to="/dashboard/profile">
@@ -100,7 +105,7 @@ const Dashboard = () => {
                                     Book Trainer</NavLink>
                             </li>
                         </>
-                    )} */}
+                    )}
                     {/* shared nav */}
                     <div className="divider"></div>
                     <li>

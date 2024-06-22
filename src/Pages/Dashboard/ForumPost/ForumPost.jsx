@@ -16,7 +16,7 @@ const ForumPost = () => {
         }
     })
     
-    const {name,email,photo,roll}=(authors)
+    const {name,email,photo,role}=(authors)
     const handlePost=(e)=>{
         e.preventDefault();
         const postTitle=e.target.title.value;
@@ -25,7 +25,7 @@ const ForumPost = () => {
         const author=name;
         const authorEmail=email;
         const authorPhoto=photo;
-        const authorRoll=roll;
+        const authorRoll=role;
         const postTime =new Date();
         const postInfo={postTitle, postDescription,image,author,authorEmail,authorPhoto,authorRoll,postTime };
         console.log('postInfo',postInfo);

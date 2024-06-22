@@ -59,7 +59,7 @@ const AllTrainer = () => {
                         <Table.HeadCell></Table.HeadCell>
                         <Table.HeadCell>Name</Table.HeadCell>
                         <Table.HeadCell>Email</Table.HeadCell>
-                        <Table.HeadCell>Roll</Table.HeadCell>
+                        <Table.HeadCell>role</Table.HeadCell>
                         <Table.HeadCell>Action</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
@@ -68,7 +68,7 @@ const AllTrainer = () => {
                                 <Table.Cell>{index + 1}</Table.Cell>
                                 <Table.Cell>{trainer?.name}</Table.Cell>
                                 <Table.Cell>{trainer?.email}</Table.Cell>
-                                <Table.Cell>{trainer?.roll}</Table.Cell>
+                                <Table.Cell>{trainer?.role}</Table.Cell>
                                 <Table.Cell>
                                     <button onClick={() => handleTrainer(trainer)}>
                                         <FaTrash className="text-2xl text-red-600"></FaTrash>

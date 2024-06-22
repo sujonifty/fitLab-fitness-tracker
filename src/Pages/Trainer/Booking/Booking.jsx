@@ -1,8 +1,17 @@
 import { Card, Kbd } from "flowbite-react";
 import { Link, useLoaderData } from "react-router-dom";
+import PaymentModal from "../../Payment/PaymentModal";
+// import Payment from "../../Payment/Payment";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Booking = () => {
-    const singleSlot = useLoaderData()
+    const {user}=useContext(AuthContext);
+    // const [isOpen, setIsOpen] = useState(false)
+    const singleSlot = useLoaderData();
+    // const closeModal = () => {
+    //     setIsOpen(false);
+    //   }
     console.log(singleSlot);
     const { trainerInfo, selectDays, selectedClasses, slotTime, slotName } = singleSlot;
     const { name, email, photo } = trainerInfo;
@@ -175,14 +184,38 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <Link to={`/payment/${singleSlot?._id}`}>
-                        <button
+                    
+                        {/* <button
                             type="button"
                             className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                         >
                             Choose plan
-                        </button>
-                    </Link>
+                        </button> */}
+                        <PaymentModal
+                        bookingInfo={{
+                            packageName: 'Advance plan',
+                           price: 150,
+                           member: {
+                             name: user?.displayName,
+                             email: user?.email,
+                             image: user?.photoURL,
+                           },
+                         }}
+                        />
+                        {/* <Payment 
+                         isOpen={isOpen}
+                         closeModal={closeModal}
+                         bookingInfo={{
+                            packageName: 'Advance plan',
+                           price: 150,
+                           member: {
+                             name: user?.displayName,
+                             email: user?.email,
+                             image: user?.photoURL,
+                           },
+                         }}
+                        ></Payment> */}
+                    
                 </Card>
                 <Card className='max-w-sm'>
                     <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Standard plan</h5>
@@ -327,14 +360,25 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <Link to={`/payment/${singleSlot?._id}`}>
+                    {/* <Link to={`/payment/${singleSlot?._id}`}>
                         <button
                             type="button"
                             className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
                         >
                             Choose plan
                         </button>
-                    </Link>
+                    </Link> */}
+                    <PaymentModal
+                        bookingInfo={{
+                            packageName: 'Standard plan',
+                           price: 99,
+                           member: {
+                             name: user?.displayName,
+                             email: user?.email,
+                             image: user?.photoURL,
+                           },
+                         }}
+                        />
                 </Card>
                 <Card className='max-w-sm'>
                     <h5 className=" text-xl font-bold text-white dark:text-gray-400 p-6 text-center shadow-xl rounded-t-lg mt-0  bg-cyan-600">Basic plan</h5>
@@ -479,14 +523,17 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    <Link to={`/payment/${singleSlot?._id}`}>
-                        <button
-                            type="button"
-                            className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                        >
-                            Choose plan
-                        </button>
-                    </Link>
+                    <PaymentModal
+                        bookingInfo={{
+                            packageName: 'Basic plan',
+                           price: 50,
+                           member: {
+                             name: user?.displayName,
+                             email: user?.email,
+                             image: user?.photoURL,
+                           },
+                         }}
+                        />
                 </Card>
             </div>
         </div>

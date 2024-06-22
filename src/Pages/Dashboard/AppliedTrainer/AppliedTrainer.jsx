@@ -23,8 +23,8 @@ const AppliedTrainer = () => {
     const handleConfirm = (id) => {
         // e.preventDefault();
         const status = 'Confirm';
-        const roll = 'Trainer';
-        const updatedInfo = { status, roll };
+        const role = 'Trainer';
+        const updatedInfo = { status, role };
         axiosSecure.put(`/confirm/${id}`, updatedInfo)
             .then(res => {
                 console.log(res.data)
@@ -43,9 +43,9 @@ const AppliedTrainer = () => {
         console.log(e)
         e.preventDefault();
         const status = 'rejected';
-        const roll = 'Member';
+        const role = 'Member';
         const feedback = e.target.feedback.value;
-        const rejectedInfo = { status, roll, feedback };
+        const rejectedInfo = { status, role, feedback };
         console.log(rejectedInfo)
         axiosSecure.put(`/reject/${id}`, rejectedInfo)
             .then(res => {

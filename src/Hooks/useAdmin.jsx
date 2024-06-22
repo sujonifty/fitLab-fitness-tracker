@@ -9,7 +9,7 @@ const useAdmin = () => {
     console.log(user?.email)
     const { data: isAdmin, isPending: isAdminLoading } = useQuery({
         queryKey: [user?.email, 'isAdmin'],
-        enabled: !loading,
+        enabled: !loading && !!user?.email && !!localStorage.getItem('access-token'),
         queryFn: async () => {
             console.log('checking admin', user)
             if (!user?.email) {
@@ -19,6 +19,7 @@ const useAdmin = () => {
             console.log(res.data);
             return res.data?.admin;
         }
+        
     })
     return [isAdmin, isAdminLoading]
 };

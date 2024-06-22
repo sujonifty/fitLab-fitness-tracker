@@ -17,14 +17,14 @@ const Subscriber = () => {
                 <Table.Head>
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>Email</Table.HeadCell>
-                    <Table.HeadCell>Roll</Table.HeadCell>
+                    <Table.HeadCell>role</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
                         Subscribers.map(sub => <Table.Row key={sub._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell>{sub.name}</Table.Cell>
                             <Table.Cell>{sub.email}</Table.Cell>
-                            <Table.Cell>{sub.roll}</Table.Cell>
+                            <Table.Cell>{sub.role}</Table.Cell>
                         </Table.Row>)
                     }
                 </Table.Body>

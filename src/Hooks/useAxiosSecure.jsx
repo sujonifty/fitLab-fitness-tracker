@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://fit-lab-server-side.vercel.app'
+    baseURL: 'http://localhost:5000/'
+    // baseURL: 'https://fit-lab-server-side.vercel.app'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
@@ -27,6 +28,7 @@ const useAxiosSecure = () => {
         return response;
     }, async (error) => {
         const status = error.response.status;
+        console.log(status)
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
             await logOut();

@@ -37,11 +37,12 @@ const Register = () => {
                             const userInfo = {
                                 name: data.name,
                                 email: data.email,
-                                roll: 'Member',
+                                role: 'Member',
                                 photo: img
                             }
                             axiosPublic.post('/users', userInfo)
                                 .then(res => {
+                                    console.log(res.data)
                                     if (res.data.insertedId) {
                                         // console.log('user inserted database')
                                         reset();
