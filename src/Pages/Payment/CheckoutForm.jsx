@@ -76,11 +76,11 @@ const CheckoutForm = ({ price, trainerDetails }) => {
           date: new Date(), // utc date convert. use moment js to 
           status: 'pending'
         }
-
+console.log(payment)
         const res = await axiosSecure.post('/payments', payment);
         console.log('payment saved', res.data);
         // refetch();
-        if (res.data?.paymentResult?.insertedId) {
+        if (res.data?.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",
