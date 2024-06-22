@@ -12,6 +12,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_payment_gateway_pk);
 
 const PaymentModal = ({bookingInfo}) => {
     const [openModal, setOpenModal] = useState(false);
+    // console.log('trainer',bookingInfo.trainerInfo)
+    const trainerDetails=bookingInfo.trainerInfo;
     return (
         <div>
             <Button onClick={() => setOpenModal(true)}>Booking Now</Button>
@@ -21,9 +23,20 @@ const PaymentModal = ({bookingInfo}) => {
                     <div className="text-center">
                     <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                     {bookingInfo.packageName}
+                    Package: {bookingInfo.packageName}
                   </p>
                 </div>
+                <div className='mt-2'>
+                  <p className='text-sm text-gray-500'>
+                    Trainer: {bookingInfo.trainerInfo.name}
+                  </p>
+                </div>
+                <div className='mt-2'>
+                  <p className='text-sm text-gray-500'>
+                    Slot Name: {bookingInfo.slotName}
+                  </p>
+                </div>
+                
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
                     Member: {bookingInfo.member.name}
@@ -31,7 +44,7 @@ const PaymentModal = ({bookingInfo}) => {
                 </div>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Member: {bookingInfo.member.email}
+                    Email: {bookingInfo.member.email}
                   </p>
                 </div>
                 
@@ -44,7 +57,7 @@ const PaymentModal = ({bookingInfo}) => {
                 <hr className='mt-8 ' />
                         <div className="my-16">
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm price={bookingInfo.price}></CheckoutForm>
+                                <CheckoutForm price={bookingInfo.price} trainerDetails={trainerDetails}></CheckoutForm>
                             </Elements>
                         </div>
                         <div className="flex justify-center gap-4">

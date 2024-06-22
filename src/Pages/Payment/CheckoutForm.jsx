@@ -5,7 +5,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import './CheckoutForm.css';
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ price}) => {
+const CheckoutForm = ({ price, trainerDetails }) => {
+  // console.log('details',trainerDetails)
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const [error, setError] = useState('');
@@ -13,13 +14,13 @@ const CheckoutForm = ({ price}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
-  const totalPrice =parseInt(price);
+  const totalPrice = parseInt(price);
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     axiosSecure.post('/create-payment-intent', { price: totalPrice })
       .then((res) => setClientSecret(res.data.clientSecret));
   }, [axiosSecure, totalPrice]);
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -46,10 +47,12 @@ const CheckoutForm = ({ price}) => {
       clientSecret,
       {
         payment_method: {
+
           card: card,
           billing_details: {
             name: user?.displayName || 'Anonymous',
             email: user?.email || 'Anonymous',
+            
           },
         },
       },
@@ -66,28 +69,29 @@ const CheckoutForm = ({ price}) => {
 
         // now save the payment in the database
         const payment = {
-            email: user.email,
-            price: totalPrice,
-            transactionId: paymentIntent.id,
-            date: new Date(), // utc date convert. use moment js to 
-            status: 'pending'
+          trainerInfo: trainerDetails,
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          date: new Date(), // utc date convert. use moment js to 
+          status: 'pending'
         }
 
         const res = await axiosSecure.post('/payments', payment);
         console.log('payment saved', res.data);
         // refetch();
         if (res.data?.paymentResult?.insertedId) {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Thank you",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            // navigate('/dashboard/paymentHistory')
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Thank you",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          // navigate('/dashboard/paymentHistory')
         }
 
-    }
+      }
 
     }
   }
@@ -120,6 +124,14 @@ const CheckoutForm = ({ price}) => {
             Cancel
           </button> */}
       <p className="text-red-600">{error}</p>
+      {
+        transactionId ? <div>
+          <p className="">Amount: ${totalPrice}</p>
+          <p className="">Transaction Id: {transactionId}</p>
+        </div>
+          :
+          ''
+      }
     </form>
   );
 };

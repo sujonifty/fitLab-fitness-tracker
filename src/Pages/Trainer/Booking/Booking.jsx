@@ -1,17 +1,13 @@
 import { Card, Kbd } from "flowbite-react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import PaymentModal from "../../Payment/PaymentModal";
-// import Payment from "../../Payment/Payment";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Booking = () => {
     const {user}=useContext(AuthContext);
-    // const [isOpen, setIsOpen] = useState(false)
     const singleSlot = useLoaderData();
-    // const closeModal = () => {
-    //     setIsOpen(false);
-    //   }
+    
     console.log(singleSlot);
     const { trainerInfo, selectDays, selectedClasses, slotTime, slotName } = singleSlot;
     const { name, email, photo } = trainerInfo;
@@ -194,7 +190,9 @@ const Booking = () => {
                         <PaymentModal
                         bookingInfo={{
                             packageName: 'Advance plan',
+                            slotName: slotName,
                            price: 150,
+                           trainerInfo,
                            member: {
                              name: user?.displayName,
                              email: user?.email,
@@ -202,19 +200,7 @@ const Booking = () => {
                            },
                          }}
                         />
-                        {/* <Payment 
-                         isOpen={isOpen}
-                         closeModal={closeModal}
-                         bookingInfo={{
-                            packageName: 'Advance plan',
-                           price: 150,
-                           member: {
-                             name: user?.displayName,
-                             email: user?.email,
-                             image: user?.photoURL,
-                           },
-                         }}
-                        ></Payment> */}
+                        
                     
                 </Card>
                 <Card className='max-w-sm'>
@@ -360,18 +346,13 @@ const Booking = () => {
                             <span className="text-base font-normal leading-tight text-gray-500">Free nutrition counseling.</span>
                         </li>
                     </ul>
-                    {/* <Link to={`/payment/${singleSlot?._id}`}>
-                        <button
-                            type="button"
-                            className="inline-flex w-full justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200 dark:focus:ring-cyan-900"
-                        >
-                            Choose plan
-                        </button>
-                    </Link> */}
+                    
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Standard plan',
-                           price: 99,
+                            slotName: slotName,
+                            price: 99,
+                            trainerInfo,
                            member: {
                              name: user?.displayName,
                              email: user?.email,
@@ -526,7 +507,9 @@ const Booking = () => {
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Basic plan',
-                           price: 50,
+                            slotName: slotName,
+                            price: 50,
+                            trainerInfo, 
                            member: {
                              name: user?.displayName,
                              email: user?.email,

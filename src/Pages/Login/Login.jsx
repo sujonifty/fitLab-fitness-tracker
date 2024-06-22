@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import GoogleLogin from "../../SocialLogin/GoogleLogin/GoogleLogin";
 
 
 const Login = () => {
@@ -84,10 +85,7 @@ const Login = () => {
                             <p>Do not have an account? Please <Link to="/register" className="text-blue-700 font-semibold">Register</Link></p>
                         </form>
 
-                        <div className="divider">OR</div>
-                        <div className="form-control my-6">
-                            <button className="btn"><FaGoogle></FaGoogle></button>
-                        </div>
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </div>
             </div>

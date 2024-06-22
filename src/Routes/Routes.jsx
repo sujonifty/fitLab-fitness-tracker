@@ -22,7 +22,7 @@ import CardDetails from "../Pages/Trainer/TrainerCard/CardDetails";
 import Booking from "../Pages/Trainer/Booking/Booking";
 import Activity from "../Pages/Member/Activity/Activity";
 import UserProfile from "../Pages/Member/UserProfile/UserProfile";
-import Payment from "../Pages/Payment/Payment";
+import Balance from "../Pages/Dashboard/Balance/Balance";
 
 export const router = createBrowserRouter([
     {
@@ -76,10 +76,7 @@ export const router = createBrowserRouter([
             //     element: <Payment></Payment>,
             //     loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/payment/${params.id}`)
             // },
-            {
-                path: "payment",
-                element: <Payment></Payment>,
-            },
+            
         ]
     },
     {
@@ -93,6 +90,10 @@ export const router = createBrowserRouter([
             {
                 path: "allTrainer",
                 element: <AllTrainer></AllTrainer>,
+            },
+            {
+                path: "balance",
+                element: <Balance></Balance>,
             },
             {
                 path: "addClass",

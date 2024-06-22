@@ -32,12 +32,12 @@ const Dashboard = () => {
                 <ul className="menu p-4">
                 {activeUser.role === "admin" && (
                             <>
-                                <li>
+                                {/* <li>
                                     <NavLink to="/dashboard">
                                         <FaHome></FaHome>
                                         Admin Home
                                     </NavLink>
-                                </li>
+                                </li> */}
                                 <li>
                                     <NavLink to="/dashboard/subscriber">
                                         <MdUnsubscribe />
