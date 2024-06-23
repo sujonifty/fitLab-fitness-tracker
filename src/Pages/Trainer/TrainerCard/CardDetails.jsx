@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Slot from "./Slot";
+import BeTrainer from "../../BeTrainer/BeTrainer";
 
 
 const CardDetails = () => {
-    
+
     const singleTrainer = useLoaderData();
-    const axiosSecure=useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
     const { _id, name, email, time, photo, mySkill, } = singleTrainer;
 
     const { data: slots = [] } = useQuery({
@@ -60,19 +61,24 @@ const CardDetails = () => {
                     <div className="flex items-center justify-center p-4 md:p-8 lg:p-5">
                         <div className="max-w-md p-6 overflow-hidden rounded-lg shadow  text-gray-100">
                             <article>
-                                
+
 
                                 <div className="flex justify-center gap-10">
-                                    
+
                                     {
-                                        slots.map(slot=><Slot key={slot._id} slot={slot}></Slot>)
+                                        slots.map(slot => <Slot key={slot._id} slot={slot}></Slot>)
                                     }
                                 </div>
 
                             </article>
                         </div>
                     </div>
+
                 </div>
+
+            </div>
+            <div className="my-6">
+                <BeTrainer></BeTrainer>
             </div>
         </section>
     );

@@ -1,5 +1,5 @@
 import { Card, Kbd } from "flowbite-react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import PaymentModal from "../../Payment/PaymentModal";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -7,7 +7,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const Booking = () => {
     const {user}=useContext(AuthContext);
     const singleSlot = useLoaderData();
-    
+    const {id}=useParams();
     console.log(singleSlot);
     const { trainerInfo, selectDays, selectedClasses, slotTime, slotName } = singleSlot;
     const { name, email, photo } = trainerInfo;
@@ -190,6 +190,7 @@ const Booking = () => {
                         <PaymentModal
                         bookingInfo={{
                             packageName: 'Advance plan',
+                            classId:id,
                             slotName: slotName,
                            price: 150,
                            trainerInfo,
@@ -350,6 +351,7 @@ const Booking = () => {
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Standard plan',
+                            classId:id,
                             slotName: slotName,
                             price: 99,
                             trainerInfo,
@@ -507,6 +509,7 @@ const Booking = () => {
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Basic plan',
+                            classId:id,
                             slotName: slotName,
                             price: 50,
                             trainerInfo, 

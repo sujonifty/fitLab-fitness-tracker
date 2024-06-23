@@ -2,6 +2,7 @@ import About from "../About/About";
 import Banner from "../Banner/Banner";
 import Feature from "../Feature/Feature";
 import RecentPost from "../RecentPost/RecentPost";
+import Team from "../Team/Team";
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
             </div>
             <div className="mb-32">
                 <RecentPost></RecentPost>
+            </div>
+            <div className="mb-32">
+                <Team></Team>
             </div>
         </div>
     );

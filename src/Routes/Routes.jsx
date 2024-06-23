@@ -53,10 +53,10 @@ export const router = createBrowserRouter([
                 path: "forum",
                 element: <Forum></Forum> ,
             },
-            {
-                path: "beTrainer",
-                element: <BeTrainer></BeTrainer> ,
-            },
+            // {
+            //     path: "beTrainer",
+            //     element: <BeTrainer></BeTrainer> ,
+            // },
             // {
             //     path: "profile",
             //     element: <PrivateRoute><Profile></Profile></PrivateRoute>,

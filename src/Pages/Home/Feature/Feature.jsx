@@ -18,7 +18,8 @@ const Feature = () => {
                     <div className="space-y-1 leading-tight">
                         <p>Achieve your goals</p>
                         <p>Expert guidance</p>
-                        <p>Comprehensive training </p>                    </div>
+                        <p>Comprehensive training </p>                    
+                        </div>
                 </div>
 
                 <div className="flex flex-col items-center p-4 border-b-2 border-r-2">

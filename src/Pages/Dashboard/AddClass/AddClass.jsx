@@ -15,7 +15,8 @@ const axiosSecure= useAxiosSecure()
         const date =e.target.date.value;
         const tag =e.target.tag.value;
         const trainers=[];
-        const classInfo={className, title, description, photo, date, tag,trainers};
+        const count = 0;
+        const classInfo={className, title, description, photo, date, tag,trainers,count};
         console.log(classInfo);
         axiosSecure.post(`/addClasses/?adminClass=${className}`, classInfo)
         .then(res=>{
