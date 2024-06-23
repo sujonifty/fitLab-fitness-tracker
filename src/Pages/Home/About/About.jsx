@@ -2,10 +2,10 @@
 
 const About = () => {
     return (
-        <section className="bg-gray-100 py-16">
+        <section className="bg-gray-50 py-16">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-8">About Us</h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600  w-9/12 mx-auto mb-16">
           Welcome to FitLab, where we strive to offer the best
           training and classes to help you achieve your fitness goals. Our team
           of experienced trainers is dedicated to providing personalized
