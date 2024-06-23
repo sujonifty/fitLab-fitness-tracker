@@ -8,7 +8,7 @@ import { Avatar } from "flowbite-react";
 // import { HiOutlineExclamationCircle } from "react-icons/hi";
 // import { Dropdown } from "flowbite-react";
 const ClassCard = ({ item }) => {
-    console.log(item)
+    console.log('class',item)
     // const [openModal, setOpenModal] = useState(true);
     const { className, title, trainers, description, photo, date, tag } = item;
 

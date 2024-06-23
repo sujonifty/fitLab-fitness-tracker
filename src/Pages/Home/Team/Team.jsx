@@ -14,7 +14,7 @@ const Team = () => {
     return (
         <section className="py-6 bg-gray-50">
             <div className="container flex flex-col justify-center p-4 mx-auto">
-                <h2 className="text-5xl font-bold">TEAM OF EXPERT COACHES</h2>
+                <h2 className="text-5xl font-bold mb-5 text-center">TEAM OF EXPERT COACHES</h2>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
                     {
                         teams.map(team =>
@@ -23,7 +23,7 @@ const Team = () => {
                                     <img className="object-cover w-full bg-gray-500 aspect-square" src={team.photo} />
 
                                 </div>                                
-                                <div className="absolute -mt-20">
+                                <div className="absolute text-xl text-white font-semibold ml-5 -mt-20">
                                     <h3>Trainer: {team.name}</h3>
                                     <h3>email: {team.email}</h3>
                                 </div>
