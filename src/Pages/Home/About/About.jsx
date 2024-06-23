@@ -2,7 +2,7 @@
 
 const About = () => {
     return (
-        <section className=" py-16">
+        <section className=" py-10">
             <div className="container mx-auto p-4 space-y-2 text-center">
                 <h2 className="text-5xl font-bold">About Us</h2>
                 <p className="text-base-content w-9/12 mx-auto mb-16">

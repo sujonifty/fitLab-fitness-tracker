@@ -12,7 +12,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_payment_gateway_pk);
 
 const PaymentModal = ({bookingInfo}) => {
     const [openModal, setOpenModal] = useState(false);
-    // console.log('trainer',bookingInfo.trainerInfo)
+    console.log('trainer',bookingInfo.uniqueClass, bookingInfo)
     const trainerDetails=bookingInfo.trainerInfo;
     return (
         <div>
@@ -57,7 +57,7 @@ const PaymentModal = ({bookingInfo}) => {
                 <hr className='mt-8 ' />
                         <div className="my-16">
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm classId={bookingInfo.classId} price={bookingInfo.price} trainerDetails={trainerDetails}></CheckoutForm>
+                                <CheckoutForm uniqueClass={bookingInfo.uniqueClass} price={bookingInfo.price} trainerDetails={trainerDetails}></CheckoutForm>
                             </Elements>
                         </div>
                         <div className="flex justify-center gap-4">

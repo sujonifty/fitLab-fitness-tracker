@@ -5,8 +5,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import './CheckoutForm.css';
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ price, trainerDetails,classId }) => {
-  console.log(classId)
+const CheckoutForm = ({ price, trainerDetails,uniqueClass }) => {
+  console.log(uniqueClass)
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const [error, setError] = useState('');
@@ -70,7 +70,7 @@ const CheckoutForm = ({ price, trainerDetails,classId }) => {
         // now save the payment in the database
         const payment = {
           trainerInfo: trainerDetails,
-          classId: classId,
+          uniqueClass: uniqueClass,
           email: user.email,
           price: totalPrice,
           transactionId: paymentIntent.id,

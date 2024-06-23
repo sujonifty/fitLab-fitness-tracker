@@ -1,16 +1,20 @@
 import { Card, Kbd } from "flowbite-react";
-import { useLoaderData, useParams } from "react-router-dom";
+// import { useLoaderData, useParams } from "react-router-dom";
 import PaymentModal from "../../Payment/PaymentModal";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
 const Booking = () => {
     const {user}=useContext(AuthContext);
     const singleSlot = useLoaderData();
-    const {id}=useParams();
-    console.log(singleSlot);
+    // const {id}=useParams();
+    // console.log(singleSlot);
     const { trainerInfo, selectDays, selectedClasses, slotTime, slotName } = singleSlot;
     const { name, email, photo } = trainerInfo;
+    // console.log(selectedClasses.value)
+    const uniqueClassName = selectedClasses.value;
+    console.log('class',uniqueClassName)
     return (
         <div>
             <div className="p-5 mx-auto sm:p-10 md:p-16 bg-base-100 text-gray-100">
@@ -190,7 +194,7 @@ const Booking = () => {
                         <PaymentModal
                         bookingInfo={{
                             packageName: 'Advance plan',
-                            classId:id,
+                            uniqueClass:uniqueClassName,
                             slotName: slotName,
                            price: 150,
                            trainerInfo,
@@ -351,7 +355,7 @@ const Booking = () => {
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Standard plan',
-                            classId:id,
+                            uniqueClass:uniqueClassName,
                             slotName: slotName,
                             price: 99,
                             trainerInfo,
@@ -509,7 +513,7 @@ const Booking = () => {
                     <PaymentModal
                         bookingInfo={{
                             packageName: 'Basic plan',
-                            classId:id,
+                            uniqueClass:uniqueClassName,
                             slotName: slotName,
                             price: 50,
                             trainerInfo, 
