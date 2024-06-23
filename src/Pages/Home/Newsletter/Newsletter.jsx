@@ -30,15 +30,15 @@ const Newsletter = () => {
     }
     return (
         <div>
-            <Card className="max-w-sm">
+            <Card className="max-w-sm bg-gray-600 text-gray-100">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
                     <div>
-                        <TextInput name="email" type="email" placeholder="name@flowbite.com" required />
+                        <TextInput name="email" type="email" placeholder="name@gmail.com" required />
                     </div>
 
 
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">Subscribe Now</Button>
                 </form>
             </Card>
         </div>
