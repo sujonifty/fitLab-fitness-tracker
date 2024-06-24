@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import Review from "../../Member/bookedTrainer/Review";
 
 const Testimonial = () => {
     const axiosPublic=useAxiosPublic();
@@ -37,7 +38,7 @@ const Testimonial = () => {
                 <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 text-gray-900">
                     <img src={review?.photo} alt="" className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full bg-gray-500 bg-gray-700" />
                     <p className="text-xl font-semibold leading-tight">{review?.info?.trainerInfo?.name}</p>
-                    <p className="text-sm uppercase">Aliquam illum</p>
+                    <Review totalStars={review.rating}></Review>
                 </div>
             </div>)
         }
