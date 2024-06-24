@@ -19,7 +19,7 @@ const UserProfile = () => {
   })
   // console.log(member)
   const bgImg = { backgroundImage: `url(${member.photo})` };
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
   const handleProfile = (e) => {

@@ -5,13 +5,14 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const RecentPost = () => {
     const axiosPublic=useAxiosPublic();
-    const { data: recentPosts= []} = useQuery({
+    const { data: posts= []} = useQuery({
         queryKey: ['post'],
         queryFn: async () => {
             const res = await axiosPublic.get('/recentPosts');
             return res.data;
         }
     })
+    const recentPosts=posts.slice(0,6)
     // console.log(posts)
     return (
         <div>

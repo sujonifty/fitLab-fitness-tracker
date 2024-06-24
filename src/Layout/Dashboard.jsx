@@ -74,11 +74,11 @@ const Dashboard = () => {
                     )}
                     {activeUser.role === "Trainer" && (
                         <>
-                            <li>
+                            {/* <li>
                                 <NavLink to="/dashboard/trainerHome">
                                     <FaHome></FaHome>
                                     Trainer Home</NavLink>
-                            </li>
+                            </li> */}
                             <li>
                                 <NavLink to="/dashboard/manageSlot">
                                     <SiManageiq />

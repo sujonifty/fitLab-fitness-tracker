@@ -1,17 +1,47 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import { Modal } from "flowbite-react";
 import { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import Swal from "sweetalert2";
 const BookedTrainer = () => {
     // const [openModal, setOpenModal] = useState(false);
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     const [review, setReview] = useState('');
+    const [info, setInfo]=useState({})
+    const totalStars = 5;
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(null);
+console.log(user)
+    const handleReview = () => {
+        const reviewer= user.displayName;
+        const photo= user.photoURL;
+        const reviewDate=new Date()
+        const reviewInfo = { review,reviewer,photo, rating, info,reviewDate};
+        console.log(reviewInfo);
+        axiosSecure.post('reviews', reviewInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Thanks For Your Review",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+            })
+            .catch(error => {
+                if (error.message) {
+                    console(error.message);
+                }
 
+            })
+    }
     function onCloseModal() {
         setOpenModal(false);
         setReview('');
@@ -25,6 +55,9 @@ const BookedTrainer = () => {
         }
     })
     console.log(bookedTrainers)
+    useEffect(()=>{
+        bookedTrainers.map(bookedTrainer => setInfo(bookedTrainer));
+    },[bookedTrainers])
     return (
 
         <section className="p-2 lg:p-8  ">
@@ -77,7 +110,7 @@ const BookedTrainer = () => {
                                 <h3 className="md:text-2xl font-bold">What You Will Say About Our Trainers.</h3>
 
                                 <p className="md:my-6 md:mb-10">At FitLab, our trainers are the backbone of our success. They bring a wealth of knowledge, enthusiasm, and personalized attention to each session, ensuring that every member achieves their fitness goals. But don't just take our word for it—hear what our clients have to say about their experiences. Our trainers have helped countless individuals transform their lives, and these testimonials reflect their dedication and expertise. Read on to discover how our trainers have made a difference in the lives of our members.</p>
-       
+
                                 <Button className="w-2/5 self-start" onClick={() => setOpenModal(true)}>Review</Button>
                                 <Modal show={openModal} size="md" onClose={onCloseModal} popup>
                                     <Modal.Header />
@@ -86,32 +119,29 @@ const BookedTrainer = () => {
                                             <h3 className="text-xl font-medium text-gray-900 dark:text-white">Your opinion matters!</h3>
                                             <div className="flex flex-col  items-start py-2 space-y-2">
                                                 <span className="text-center">How was your experience?</span>
-                                                <div className="flex space-x-3">
-                                                    <button type="button" title="Rate 1 stars" aria-label="Rate 1 stars">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7 text-yellow-500">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button" title="Rate 2 stars" aria-label="Rate 2 stars">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7 text-yellow-500">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button" title="Rate 3 stars" aria-label="Rate 3 stars">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7 text-yellow-500">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button" title="Rate 4 stars" aria-label="Rate 4 stars">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7 text-yellow-500">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button" title="Rate 5 stars" aria-label="Rate 5 stars">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7 text-gray-600">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                                        </svg>
-                                                    </button>
+
+                                                <div className="flex space-x-1">
+                                                    {Array.from({ length: totalStars }, (_, index) => {
+                                                        const ratingValue = index + 1;
+                                                        return (
+                                                            <label key={index}>
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating"
+                                                                    value={ratingValue}
+                                                                    onClick={() => setRating(ratingValue)}
+                                                                    className="hidden"
+                                                                />
+                                                                <FaStar
+                                                                    size={30}
+                                                                    className={`cursor-pointer ${ratingValue <= (hover || rating) ? 'text-yellow-500' : 'text-gray-300'
+                                                                        }`}
+                                                                    onMouseEnter={() => setHover(ratingValue)}
+                                                                    onMouseLeave={() => setHover(null)}
+                                                                />
+                                                            </label>
+                                                        );
+                                                    })}
                                                 </div>
                                             </div>
                                             <div>
@@ -121,7 +151,7 @@ const BookedTrainer = () => {
                                                 <TextInput
                                                     id="review"
                                                     rows="3"
-                                                    
+
                                                     placeholder="Give your feedback..."
                                                     value={review}
                                                     onChange={(event) => setReview(event.target.value)}
@@ -129,7 +159,7 @@ const BookedTrainer = () => {
                                                 />
                                             </div>
                                             <div className="w-full">
-                                                <Button>Log in to your account</Button>
+                                                <Button onClick={handleReview}>Review</Button>
                                             </div>
                                         </div>
                                     </Modal.Body>

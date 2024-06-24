@@ -5,6 +5,7 @@ import Feature from "../Feature/Feature";
 import FeatureClass from "../FeatureClass/FeatureClass";
 import RecentPost from "../RecentPost/RecentPost";
 import Team from "../Team/Team";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
     return (
@@ -33,6 +34,10 @@ const Home = () => {
             <div className="mb-32">
                 <RecentPost></RecentPost>
             </div>
+            <div className="mb-32">
+                <Testimonial></Testimonial>
+            </div>
+
             <div className="mb-32">
                 <Team></Team>
             </div>
