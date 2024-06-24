@@ -4,8 +4,9 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../Provider/AuthProvider";
 import './CheckoutForm.css';
 import Swal from "sweetalert2";
+import PropTypes from 'prop-types';
 
-const CheckoutForm = ({ price, trainerDetails,uniqueClass }) => {
+const CheckoutForm = ({ price, trainerDetails,uniqueClass,slotName,slotTime }) => {
   console.log(uniqueClass)
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
@@ -70,6 +71,8 @@ const CheckoutForm = ({ price, trainerDetails,uniqueClass }) => {
         // now save the payment in the database
         const payment = {
           trainerInfo: trainerDetails,
+          slotName:slotName,
+          slotTime: slotTime,
           uniqueClass: uniqueClass,
           email: user.email,
           price: totalPrice,
@@ -136,5 +139,11 @@ console.log(payment)
     </form>
   );
 };
-
+CheckoutForm.propTypes = {
+  price: PropTypes.obj,
+  trainerDetails: PropTypes.obj,
+  uniqueClass: PropTypes.obj,
+  slotName: PropTypes.obj,
+  slotTime: PropTypes.obj,
+}
 export default CheckoutForm;

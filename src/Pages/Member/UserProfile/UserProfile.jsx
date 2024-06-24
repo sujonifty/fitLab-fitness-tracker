@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const UserProfile = () => {
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const { data: member = [], refetch } = useQuery({
     queryKey: ['members'],
@@ -17,7 +17,7 @@ const UserProfile = () => {
       return res.data;
     }
   })
-  console.log(member)
+  // console.log(member)
   const bgImg = { backgroundImage: `url(${member.photo})` };
   const [isOpen, setIsOpen] = useState(true);
 
@@ -27,7 +27,7 @@ const UserProfile = () => {
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const updateInfo = { name, photo };
-    console.log(updateInfo)
+    // console.log(updateInfo)
     axiosSecure.put(`/updateProfile/${member._id}`, updateInfo)
         .then(res => {
             console.log(res.data)

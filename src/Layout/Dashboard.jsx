@@ -123,7 +123,8 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/">
                             <FaHome></FaHome>
-                            Home</NavLink>
+                            Home
+                        </NavLink>
                     </li>
 
                 </ul>

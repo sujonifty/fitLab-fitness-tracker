@@ -198,6 +198,7 @@ const Booking = () => {
                             packageName: 'Advance plan',
                             uniqueClass:uniqueClassName,
                             slotName: slotName,
+                            slotTime: slotTime,
                            price: 150,
                            trainerInfo,
                            member: {
@@ -359,6 +360,7 @@ const Booking = () => {
                             packageName: 'Standard plan',
                             uniqueClass:uniqueClassName,
                             slotName: slotName,
+                            slotTime: slotTime,
                             price: 99,
                             trainerInfo,
                            member: {
@@ -517,6 +519,7 @@ const Booking = () => {
                             packageName: 'Basic plan',
                             uniqueClass:uniqueClassName,
                             slotName: slotName,
+                            slotTime: slotTime,
                             price: 50,
                             trainerInfo, 
                            member: {

@@ -8,7 +8,7 @@ import Classes from "../Pages/Classes/AllClasses/AllClasses";
 // import Profile from "../Pages/Profile/Profile";
 import Forum from "../Pages/Forum/Forum/Forum";
 import PrivateRoute from "./PrivateRoute";
-import BeTrainer from "../Pages/BeTrainer/BeTrainer";
+// import BeTrainer from "../Pages/BeTrainer/BeTrainer";
 import Dashboard from "../Layout/Dashboard";
 import AppliedTrainer from "../Pages/Dashboard/AppliedTrainer/AppliedTrainer";
 import AllTrainer from "../Pages/Dashboard/AllTrainer/AllTrainer";
@@ -23,6 +23,7 @@ import Booking from "../Pages/Trainer/Booking/Booking";
 import Activity from "../Pages/Member/Activity/Activity";
 import UserProfile from "../Pages/Member/UserProfile/UserProfile";
 import Balance from "../Pages/Dashboard/Balance/Balance";
+import BookedTrainer from "../Pages/Member/bookedTrainer/BookedTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -122,6 +123,10 @@ export const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <UserProfile></UserProfile>
+            },
+            {
+                path: "bookedTrainer",
+                element: <BookedTrainer></BookedTrainer>
             },
             
             

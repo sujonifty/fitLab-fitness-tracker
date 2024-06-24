@@ -57,7 +57,7 @@ const PaymentModal = ({bookingInfo}) => {
                 <hr className='mt-8 ' />
                         <div className="my-16">
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm uniqueClass={bookingInfo.uniqueClass} price={bookingInfo.price} trainerDetails={trainerDetails}></CheckoutForm>
+                                <CheckoutForm slotName={bookingInfo.slotName} slotTime={bookingInfo.slotTime} uniqueClass={bookingInfo.uniqueClass} price={bookingInfo.price} trainerDetails={trainerDetails}></CheckoutForm>
                             </Elements>
                         </div>
                         <div className="flex justify-center gap-4">
