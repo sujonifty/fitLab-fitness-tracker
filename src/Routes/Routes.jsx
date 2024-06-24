@@ -24,6 +24,7 @@ import Activity from "../Pages/Member/Activity/Activity";
 import UserProfile from "../Pages/Member/UserProfile/UserProfile";
 import Balance from "../Pages/Dashboard/Balance/Balance";
 import BookedTrainer from "../Pages/Member/bookedTrainer/BookedTrainer";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -68,12 +69,12 @@ export const router = createBrowserRouter([
             // },
             {
                 path: "cardDetails/:email",
-                element: <CardDetails></CardDetails>,
+                element:<PrivateRoute> <CardDetails></CardDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/trainerCard/${params.email}`)
             },
             {
                 path: "booking/:id",
-                element: <Booking></Booking>,
+                element: <PrivateRoute><Booking></Booking></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://fit-lab-server-side.vercel.app/slotBooking/${params.id}`)
             },
             // {
@@ -90,19 +91,19 @@ export const router = createBrowserRouter([
         children:[
             {
                 path: "appliedTrainer",
-                element: <AppliedTrainer></AppliedTrainer>,
+                element: <AdminRoute> <AppliedTrainer></AppliedTrainer></AdminRoute>,
             },
             {
                 path: "allTrainer",
-                element: <AllTrainer></AllTrainer>,
+                element:<AdminRoute> <AllTrainer></AllTrainer></AdminRoute>,
             },
             {
                 path: "balance",
-                element: <Balance></Balance>,
+                element: <AdminRoute> <Balance></Balance></AdminRoute>,
             },
             {
                 path: "addClass",
-                element: <AddClass></AddClass>,
+                element: <AdminRoute><AddClass></AddClass></AdminRoute>,
             },
             {
                 path: "addSlot",

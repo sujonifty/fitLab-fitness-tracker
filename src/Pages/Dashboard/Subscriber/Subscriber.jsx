@@ -4,7 +4,7 @@ import { Table } from "flowbite-react";
 const Subscriber = () => {
     const axiosPublic = useAxiosPublic();
     const { data: Subscribers = [], refetch } = useQuery({
-        queryKey: ['trainer'],
+        queryKey: ['subscriber'],
         queryFn: async () => {
             const res = await axiosPublic.get('/subscriber');
             return res.data;
