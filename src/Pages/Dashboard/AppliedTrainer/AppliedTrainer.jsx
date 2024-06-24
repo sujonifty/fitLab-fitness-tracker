@@ -6,6 +6,7 @@ import { FaEye } from "react-icons/fa";
 import { Button, Label, Modal, Table, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Helmet } from "react-helmet-async";
 
 const AppliedTrainer = () => {
 
@@ -63,6 +64,7 @@ const AppliedTrainer = () => {
     }
     return (
         <div>
+            <Helmet><title>fitLab | AppliedTrainer</title></Helmet>
             <div className="text-center my-4">
                 <h2 className="text-3xl">Total Applicants: {applicants.length}</h2>
             </div>

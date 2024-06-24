@@ -2,6 +2,7 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
     const [errorInfo, setErrorInfo]=useState('');
@@ -80,6 +81,8 @@ const axiosSecure= useAxiosSecure()
         // </section >
 
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/6R9G2kM/add-Class-Bg.jpg)' }}>
+            <Helmet><title>fitLab | AddClass</title></Helmet>
+            
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">

@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const Activity = () => {
@@ -19,6 +20,7 @@ const Activity = () => {
     return (
         <div>
             <div className="overflow-x-auto">
+            <Helmet><title>fitLab | Activity</title></Helmet>
                 <Table>
                     <Table.Head>
                         <Table.HeadCell></Table.HeadCell>

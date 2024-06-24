@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Button, Drawer, Label, TextInput, Textarea } from "flowbite-react";
 import { HiEnvelope } from "react-icons/hi2";
+import { Helmet } from "react-helmet-async";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext)
@@ -23,6 +24,8 @@ const UserProfile = () => {
   return (
 
     <div>
+            <Helmet><title>fitLab | Profile</title></Helmet>
+
       <div className="flex min-h-screen pt-20 md:pt-0">
         <div className="flex flex-col max-w-4xl w-full relative z-20 mx-auto p-8 bg-white rounded-2xl shadow-lg md:max-w-md md:p-0 md:rounded-none">
           <div className="relative bg-gradient-to-r from-blue-500 to-blue-700 theme-orange:from-pink-500 theme-orange:to-orange-400 theme-purple:from-purple-800 theme-purple:to-purple-600 theme-green:from-green-600 theme-green:to-green-500 theme-blue:from-blue-500 theme-blue:to-teal-400">

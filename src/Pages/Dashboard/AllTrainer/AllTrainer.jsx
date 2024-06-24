@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrash } from "react-icons/fa";
 import { Table } from "flowbite-react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -50,6 +51,8 @@ const AllTrainer = () => {
     }
     return (
         <div>
+            <Helmet><title>fitLab | AllTrainer</title></Helmet>
+
             <div className="text-center my-4">
                 <h2 className="text-3xl">Total trainers: {trainers.length}</h2>
             </div>

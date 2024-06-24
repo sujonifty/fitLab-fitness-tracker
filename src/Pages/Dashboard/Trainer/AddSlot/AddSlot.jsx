@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Select from 'react-select';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const AddSlot = () => {
@@ -36,7 +37,7 @@ const AddSlot = () => {
             .then(res => {
                 setMyClasses(res.data);
             })
-    }, [])
+    }, [axiosSecure])
 
     const demo = myClasses.map(item => ({ value: item.className, label: item.className }));
     const handleClasses = (selectedOptions) => {
@@ -115,6 +116,8 @@ const AddSlot = () => {
         // })
     }
     return (
+        <div>
+            <Helmet><title>fitLab | AddSlot</title></Helmet>
         <form onSubmit={handleAddSlot} className="flex max-w-md flex-col gap-4">
             <div>
                 <div className="mb-2 block">
@@ -159,6 +162,7 @@ const AddSlot = () => {
             </div>
             <Button type="submit">Add Slot</Button>
         </form>
+        </div>
     );
 };
 

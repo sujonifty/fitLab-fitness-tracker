@@ -4,6 +4,7 @@ import PaymentModal from "../../Payment/PaymentModal";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Booking = () => {
     const {user}=useContext(AuthContext);
@@ -17,6 +18,7 @@ const Booking = () => {
     console.log('class',uniqueClassName)
     return (
         <div>
+            <Helmet><title>fitLab | Booking</title></Helmet>
             <div className="p-5 mx-auto sm:p-10 md:p-16 bg-base-100 text-gray-100">
                 <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
                     <img src="https://i.ibb.co/0DhHKLZ/trainer.jpg" alt="" className="w-full object-fill opacity-50 h-60 sm:h-96 bg-gray-500 " />

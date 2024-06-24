@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ForumPost = () => {
     const {user}=useContext(AuthContext);
@@ -50,6 +51,8 @@ const ForumPost = () => {
     }
     return (
         <Card className="max-w-sm">
+            <Helmet><title>fitLab | ForumPost</title></Helmet>
+            
             <form onSubmit={handlePost} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">

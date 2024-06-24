@@ -15,7 +15,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
-    const axiosSecure= useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
     const { data: activeUser = {} } = useQuery({
         queryKey: ['activeUser'],
         queryFn: async () => {
@@ -30,62 +30,74 @@ const Dashboard = () => {
             {/* dashboard side-bar */}
             <div className="w-64 min-h-screen bg-[#D2B48C]">
                 <ul className="menu p-4">
-                {activeUser.role === "admin" && (
-                            <>
-                                {/* <li>
+                    {activeUser.role === "admin" && (
+                        <>
+                            {/* <li>
                                     <NavLink to="/dashboard">
                                         <FaHome></FaHome>
                                         Admin Home
                                     </NavLink>
                                 </li> */}
-                                <li>
-                                    <NavLink to="/dashboard/subscriber">
-                                        <MdUnsubscribe />
-                                        Subscribers
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/addClass">
-                                        <FaMoneyCheckDollar />
-                                        Add new Class</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/balance">
-                                        <FaMoneyBill></FaMoneyBill>
-                                        Balance</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/appliedTrainer">
-                                        <FaUsers></FaUsers>
-                                        Applied Trainer</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/allTrainer">
-                                        <FaUsers></FaUsers>
-                                        All Trainers</NavLink>
-                                </li>
-                            </>
-                            )}
-                            {activeUser.role === "Trainer" && (
-                            <>
-                                <li>
-                                    <NavLink to="/dashboard/trainerHome">
-                                        <FaHome></FaHome>
-                                        Trainer Home</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/manageSlot">
-                                        <SiManageiq />
+                            <li>
+                                <NavLink to="/dashboard/subscriber">
+                                    <MdUnsubscribe />
+                                    Subscribers
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/addClass">
+                                    <FaMoneyCheckDollar />
+                                    Add new Class</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/balance">
+                                    <FaMoneyBill></FaMoneyBill>
+                                    Balance</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/appliedTrainer">
+                                    <FaUsers></FaUsers>
+                                    Applied Trainer</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/allTrainer">
+                                    <FaUsers></FaUsers>
+                                    All Trainers</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/addForum">
+                                    <FaAd></FaAd>
+                                    Add new Forum
+                                </NavLink>
+                            </li>
+                        </>
+                    )}
+                    {activeUser.role === "Trainer" && (
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/trainerHome">
+                                    <FaHome></FaHome>
+                                    Trainer Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/manageSlot">
+                                    <SiManageiq />
 
-                                        Manage Slots</NavLink>
-                                </li>
+                                    Manage Slots</NavLink>
+                            </li>
 
-                                <li>
-                                    <NavLink to="/dashboard/addSlot">
-                                        <FaAd></FaAd>
-                                        Add New slot</NavLink>
-                                </li>
-                            </>
+                            <li>
+                                <NavLink to="/dashboard/addSlot">
+                                    <FaAd></FaAd>
+                                    Add New slot</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/addForum">
+                                    <FaAd></FaAd>
+                                    Add new Forum
+                                </NavLink>
+                            </li>
+                        </>
                     )}
                     {activeUser.role === "Member" && (
                         <>
@@ -113,12 +125,7 @@ const Dashboard = () => {
                             <FaHome></FaHome>
                             Home</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/dashboard/addForum">
-                            <FaAd></FaAd>
-                            Add new Forum
-                        </NavLink>
-                    </li>
+
                 </ul>
             </div>
             {/* dashboard content */}

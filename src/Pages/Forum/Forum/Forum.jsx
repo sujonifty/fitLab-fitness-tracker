@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import ForumCard from "./ForumCard/ForumCard";
+import { Helmet } from "react-helmet-async";
 
 
 const Forum = () => {
@@ -15,6 +16,8 @@ const Forum = () => {
     // console.log(posts)
     return (
         <div>
+            <Helmet><title>fitLab | Forum</title></Helmet>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-16">
                 {
                     posts.map(post=><ForumCard key={post._id} post={post}></ForumCard>)

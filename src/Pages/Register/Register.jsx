@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, updateUserProfile, error, setError } = useContext(AuthContext);
@@ -65,6 +66,7 @@ const Register = () => {
     }
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/V9ZLRJX/register.jpg)' }}>
+            <Helmet><title>fitLab | Register</title></Helmet>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">

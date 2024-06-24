@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Table } from "flowbite-react";
+import { Helmet } from "react-helmet-async";
 
 
 const Balance = () => {
@@ -19,6 +20,8 @@ const Balance = () => {
     console.log(payments)
     return (
         <div>
+            <Helmet><title>fitLab | Balance</title></Helmet>
+
             <h2 className="text3-xl">Total Payments: {payments.length}</h2>
             <div className="overflow-x-auto">
                 <Table className="table table-zebra">
