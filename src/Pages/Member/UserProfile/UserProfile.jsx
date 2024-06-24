@@ -5,11 +5,12 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { Button, Drawer, Label, TextInput, Textarea } from "flowbite-react";
 import { HiEnvelope } from "react-icons/hi2";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext)
   const axiosSecure = useAxiosSecure();
-  const { data: member = [] } = useQuery({
+  const { data: member = [], refetch } = useQuery({
     queryKey: ['members'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/member/?email=${user.email}`);
@@ -21,6 +22,26 @@ const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => setIsOpen(false);
+  const handleProfile = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const updateInfo = { name, photo };
+    console.log(updateInfo)
+    axiosSecure.put(`/updateProfile/${member._id}`, updateInfo)
+        .then(res => {
+            console.log(res.data)
+            if (res.data.modifiedCount > 0) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'profile updated.',
+                    icon: 'success',
+                    timer: 2500
+                })
+                refetch();
+            }
+        })
+}
   return (
 
     <div>
@@ -89,24 +110,24 @@ const UserProfile = () => {
       <Drawer open={isOpen} onClose={handleClose}>
         <Drawer.Header title="CONTACT US" titleIcon={HiEnvelope} />
         <Drawer.Items>
-          <form action="#">
+          <form onSubmit={handleProfile}>
             <div className="mb-6">
               <Label className="mb-2 block">
                 Name
               </Label>
-              <TextInput  name="name" defaultValue={member.name} />
+              <TextInput type="text" name="name" defaultValue={member.name} />
             </div>
             <div className="mb-6 mt-3">
               <Label htmlFor="email" className="mb-2 block">
                 Your email
               </Label>
-              <TextInput id="email" name="email" defaultValue={member.email} type="email" readOnly />
+              <TextInput  name="email" defaultValue={member.email} type="email" readOnly />
             </div>
             <div className="mb-6 mt-3">
               <Label  className="mb-2 block">
-                Your Photo
+                Your PhotoURL
               </Label>
-              <TextInput name="text" defaultValue={member.photo} type="email" />
+              <TextInput type="text" name="photo" defaultValue={member.photo}  />
             </div>
 
             {/* <div className="mb-6">
